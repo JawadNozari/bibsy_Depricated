@@ -14,7 +14,9 @@ module.exports = {
         'mörkLila': '#541A69',
         'ljusGrön': '#F3F8EA',
         'grön': '#89B52B',
-        'mörkGrön': '#58741B'
+        'mörkGrön': '#58741B',
+        'adminSidebar': '#1F102B',
+
       }
     },
   },
