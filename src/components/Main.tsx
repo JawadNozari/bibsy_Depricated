@@ -1,15 +1,16 @@
 import React from 'react';
 import Theme from './Theme';
-import SignInWidget from './SignIn_Widget';
-import Navbar from './Navbar';
+
+//import SignInWidget from './SignIn_Widget';
+import MainContainer from './MainContainer';
+
 
 const Main =()=> {
     return (
 
-     <div className='flex justify-center items-center h-screen'>
+     <div className='flex justify-center content-center h-screen touch-none'>
         <Theme/>
-        {/* <SignInWidget/> */}
-        <Navbar />
+        <MainContainer page='list'/>
      </div>
     );
 }
