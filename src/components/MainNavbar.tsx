@@ -2,7 +2,7 @@
 
 
 
-// const Buttons = (props) => {
+ const MainNavbar = (/*props*/) => {
 
 //     const [] = useEffect<>();
     
@@ -27,10 +27,13 @@
 //        }
 
 //    }, []);
-   /* 
+   
     return (
-        <div>
-            <div></div>
+        <div className="bg-adminSidebar w-[80vw] h-[15vh] fixed  right-10 top-5 items-start flex justify-center rounded-2xl overflow-hidden">
+            <div className="bg-green-200 w-[20%] h-[100%] rounded-2xl ">
+                <label ></label>
+                <p>Members</p>
+            </div>
             <div></div>
             <div></div>
             <div></div>
@@ -38,4 +41,4 @@
         </div>
     );
 }
-export default Buttons*/
+export default MainNavbar;
