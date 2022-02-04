@@ -6,6 +6,7 @@ import {RiErrorWarningLine} from 'react-icons/ri';
 import {RiDashboardLine} from 'react-icons/ri';
 import {ImBooks} from 'react-icons/im';
 
+
   const Navbar = () =>{
     return(
       <div className="bg-adminSidebar  w-[22vw] xl:w-[16vw] h-[auto] top-[15%] bottom-[15%] left-[2vw] fixed items-center grid justify-center rounded-2xl overflow-hidden">
@@ -25,15 +26,20 @@ import {ImBooks} from 'react-icons/im';
               </div>
             </a>
 
-            <a href="" className="w-[100%]">
-              <div className="sidebar-options">
-                <label className=""><FiUsers color='white'size={'3rem'}/></label>
-                    <p className="sidebar-text">
-                      Members
-                    </p>
-              </div>
-            </a>
+        <a href="">
+          <div>
+              <div className="sidebar-options w-[100%]"> 
+              <label className=""><FiUsers color='white'size={'3rem'}/></label>
+                <p className="sidebar-text">
+                  Members
+                </p>
+            </div>
+          </div>
+        </a>
+          
 
+            
+            
             <a href="" className="w-[100%]">
               <div className="sidebar-options">
                 <label className=""><ImBooks color='white'size={'3rem'}/></label>
