@@ -13,13 +13,20 @@
                 pt-5 pb-5
                  text-zinc-50 
                  hover:bg-purple-800 
-                 w-full;
+                 w-full
      }
 
      .sidebar-text{
         @apply  w-[50%] 
                 hidden 
-                md:block;
+                md:block
+     }
+
+     .navbar-options {
+        @apply   w-[18%]
+                 h-[80%] 
+                 rounded-2xl
+                 m-3
      }
      
     

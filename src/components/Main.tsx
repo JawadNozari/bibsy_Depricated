@@ -4,6 +4,7 @@ import Theme from './Theme';
 //import SignInWidget from './SignIn_Widget';
 import MainContainer from './MainContainer';
 import MainNavbar from './MainNavbar';
+import Navbar from './Navbar';
 
 
 const Main =()=> {
@@ -13,6 +14,7 @@ const Main =()=> {
         <Theme/>
         {/* <MainContainer page='list'/> */}
         <MainNavbar/>
+        <Navbar/>
      </div>
     );
 }

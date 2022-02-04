@@ -1,4 +1,13 @@
  import React, {useEffect, useState} from 'react';
+ import {FiUsers} from 'react-icons/fi';
+ import {ImBooks} from 'react-icons/im';
+ import {SiBookstack} from 'react-icons/si';
+ import {RiErrorWarningLine} from 'react-icons/ri';
+ import {RiDashboardLine} from 'react-icons/ri';
+
+
+
+
 
 
 
@@ -29,15 +38,39 @@
 //    }, []);
    
     return (
-        <div className="bg-adminSidebar w-[80vw] h-[15vh] fixed  right-10 top-5 items-start flex justify-center rounded-2xl overflow-hidden">
-            <div className="bg-green-200 w-[20%] h-[100%] rounded-2xl ">
-                <label ></label>
-                <p>Members</p>
+        <div className=" w-[75vw] h-[15vh] fixed  right-10 top-5 items-start flex justify-center rounded-2xl overflow-hidden">
+            
+            <div className="navbar-options bg-blue-500">
+            <label className=""><RiDashboardLine color='white'size={'3rem'}/></label>
+                <p className="sidebar-text text-3xl">
+                Dashboard
+                </p>
             </div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+
+            <div className="navbar-options bg-purple-700">
+            <label className=""><FiUsers color='white'size={'3rem'}/></label>
+                <p className="sidebar-text text-3xl">Members</p>
+            </div>
+            
+            <div className="navbar-options bg-yellow-500">
+            <label className=""><ImBooks color='white'size={'3rem'}/></label>
+                <p className="sidebar-text text-3xl">Books</p>
+            </div>
+            
+            <div className="navbar-options bg-green-700">
+            <label className=""><SiBookstack color='white'size={'3rem'}/></label>
+                <p className="sidebar-text text-3xl">
+                Returned
+                </p>
+            </div>
+            
+            <div className="navbar-options bg-red-700">
+            <label className=""><RiErrorWarningLine color='white'size={'3rem'}/></label>
+                <p className="sidebar-text text-xl">
+                Not Returned
+                </p>
+            </div>
+            
         </div>
     );
 }
