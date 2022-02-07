@@ -11,7 +11,7 @@
 
 
 
- const MainNavbar = (/*props*/) => {
+ const MainNavbar = (props: any) => {
 
 //     const [] = useEffect<>();
     
@@ -38,40 +38,105 @@
 //    }, []);
    
     return (
-        <div className=" w-[75vw] h-[15vh] fixed  right-10 top-5 items-start flex justify-center rounded-2xl overflow-hidden">
-            
-            <div className="navbar-options bg-blue-500">
-            <label className=""><RiDashboardLine color='white'size={'3rem'}/></label>
-                <p className="sidebar-text text-3xl">
-                Dashboard
-                </p>
-            </div>
+        <>
+            {/*BIG BUTTONS*/}
+            {props.isBig && <div className="  h-[15vh] xl:w-[70vw] fixed right-[1%] top-[2%] items-start flex justify-center rounded-xl overflow-hidden">
+            <a href=""className="link ">
+                <div className="navbar-options active:bg-blue-700 bg-blue-500 mx-auto">
+                    <label className=""><RiDashboardLine color='white'size={'3rem'}/></label>
+                    <p className="main-sidebar-text">
+                        Dashboard
+                    </p>
+                </div>
+            </a>
 
-            <div className="navbar-options bg-purple-700">
-            <label className=""><FiUsers color='white'size={'3rem'}/></label>
-                <p className="sidebar-text text-3xl">Members</p>
-            </div>
+            <a href="" className="link">
+                <div className="navbar-options active:bg-purple-700 bg-purple-700">
+                    <label className=""><FiUsers color='white'size={'3rem'}/></label>
+                    <p className="main-sidebar-text">
+                        Members
+                    </p>
+                </div>
+            </a>
+
+            <a href="" className="link">
+                <div className="navbar-options active:bg-yellow-600 bg-yellow-500">
+                    <label className=""><ImBooks color='white'size={'3rem'}/></label>
+                    <p className="main-sidebar-text">
+                        Books
+                    </p>
+                </div>
+            </a>
+
+            <a href="" className="link">
+                <div className="navbar-options active:bg-green-700 bg-green-600">
+                    <label className=""><SiBookstack color='white'size={'3rem'}/></label>
+                    <p className="main-sidebar-text">
+                        Returned
+                    </p>
+                </div>
+            </a>
             
-            <div className="navbar-options bg-yellow-500">
-            <label className=""><ImBooks color='white'size={'3rem'}/></label>
-                <p className="sidebar-text text-3xl">Books</p>
+            <a href="" className="link">
+                <div className="navbar-options active:bg-red-700 bg-red-500">
+                    <label className=""><RiErrorWarningLine color='white'size={'3rem'}/></label>
+                    <p className="main-sidebar-text w-[80%]">
+                        Not Returned
+                    </p>
+                </div>
+            </a>
             </div>
+        }
+
+            {/*SMALL BUTTONS*/}
+            {!props.isBig && <div className=" h-[15vh] xl:w-[70vw] fixed right-[1%] top-[2%] items-start flex justify-center rounded-xl overflow-hidden">
+            <a href=""className="link ">
+                <div className="navbar-options active:bg-yellow-300 bg-blue-500 mx-auto">
+                    <label className=""><RiDashboardLine color='white'size={'3rem'}/></label>
+                    <p className="main-sidebar-text">
+                        Dashboard
+                    </p>
+                </div>
+            </a>
+
+            <a href="" className="link">
+                <div className="navbar-options bg-purple-700">
+                    <label className=""><FiUsers color='white'size={'3rem'}/></label>
+                    <p className="main-sidebar-text">
+                        Members
+                    </p>
+                </div>
+            </a>
+
+            <a href="" className="link">
+                <div className="navbar-options bg-yellow-500">
+                    <label className=""><ImBooks color='white'size={'3rem'}/></label>
+                    <p className="main-sidebar-text">
+                        Books
+                    </p>
+                </div>
+            </a>
+
+            <a href="" className="link">
+                <div className="navbar-options bg-green-700">
+                    <label className=""><SiBookstack color='white'size={'3rem'}/></label>
+                    <p className="main-sidebar-text">
+                        Returned
+                    </p>
+                </div>
+            </a>
             
-            <div className="navbar-options bg-green-700">
-            <label className=""><SiBookstack color='white'size={'3rem'}/></label>
-                <p className="sidebar-text text-3xl">
-                Returned
-                </p>
+            <a href="" className="link">
+                <div className="navbar-options bg-red-700">
+                    <label className=""><RiErrorWarningLine color='white'size={'3rem'}/></label>
+                    <p className="main-sidebar-text w-[80%]">
+                        Not Returned
+                    </p>
+                </div>
+            </a>
             </div>
-            
-            <div className="navbar-options bg-red-700">
-            <label className=""><RiErrorWarningLine color='white'size={'3rem'}/></label>
-                <p className="sidebar-text text-xl">
-                Not Returned
-                </p>
-            </div>
-            
-        </div>
+        }
+        </> 
     );
 }
 export default MainNavbar;
