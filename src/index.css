@@ -5,6 +5,8 @@
 
 @layer components{
 
+
+   /*Sidebar*/
      .sidebar-options {
         @apply flex
                items-center
@@ -22,14 +24,7 @@
                md:block
      }
 
-     .main-sidebar-text{
-      @apply w-[60%] 
-             hidden 
-             md:block
-             text-xl
-             text-white
-   }
-
+     /*main navbar*/
      .navbar-options {
         @apply w-[90%]
                h-[100%] 
@@ -41,10 +36,33 @@
                justify-center 
      }
 
+
      .link {
         @apply w-[25%]
                h-[80%]
      }
      
+
+
+     .main-sidebar-text{
+         @apply w-[60%] 
+               hidden 
+               md:block
+               text-xl
+               text-white
+   }
+
+   .Button-options {
+         @apply w-[100%]
+               h-[35%] 
+               rounded-2xl
+               m-5
+               flex
+               items-center
+               text-center 
+               justify-center 
+               mt-16
+}
+
     
 }
