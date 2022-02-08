@@ -64,5 +64,13 @@
                mt-16
 }
 
+
+   .bookInput {
+      @apply m-5
+             w-[42%]
+             p-[1%]
+             rounded-xl
+   }
+
     
 }
