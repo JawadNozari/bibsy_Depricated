@@ -46,14 +46,14 @@ import { Link, NavLink } from 'react-router-dom';
             <div className=" bg-purple-100 h-[75vh] w-[75vw] fixed right-[3%] top-[15%] items-start flex justify-center rounded-xl overflow-hidden">
                 {/* Members knapp */}
                 <div className="h-[90%] w-[100%] p-5  pr-16">
-                    <NavLink to="" className="Button-options active:bg-purple-700 bg-purple-600">
+                    <NavLink to="/studentList" className="Button-options active:bg-purple-700 bg-purple-600">
                         <label className=""><FiUsers color='white'size={'3rem'}/></label>
                         <p className="main-sidebar-text">
                             Members
                         </p>
                     </NavLink>
                     {/* Books knapp */}
-                    <NavLink to="" className="Button-options active:bg-yellow-600 bg-yellow-500">
+                    <NavLink to="/bookList" className="Button-options active:bg-yellow-600 bg-yellow-500">
                         <label className=""><ImBooks color='white'size={'3rem'}/></label>
                         <p className="main-sidebar-text">
                             Books
@@ -69,7 +69,7 @@ import { Link, NavLink } from 'react-router-dom';
                         </p>
                     </NavLink>
                     {/* Not Returned Knapp */}
-                    <NavLink to="" className="Button-options active:bg-red-700 bg-red-500">
+                    <NavLink to="/loanedList" className="Button-options active:bg-red-700 bg-red-500">
                         <label className=""><RiErrorWarningLine color='white'size={'3rem'}/></label>
                         <p className="main-sidebar-text w-[80%]">
                             Not Returned
@@ -94,7 +94,7 @@ import { Link, NavLink } from 'react-router-dom';
                 </div>
             </NavLink>
 
-            <NavLink to="" className="link">
+            <NavLink to="/studentList" className="link">
                 <div className="navbar-options active:bg-purple-700 bg-purple-700">
                     <label className=""><FiUsers color='white'size={'3rem'}/></label>
                     <p className="main-sidebar-text">
@@ -103,7 +103,7 @@ import { Link, NavLink } from 'react-router-dom';
                 </div>
             </NavLink>
 
-            <NavLink to="" className="link">
+            <NavLink to="/bookList" className="link">
                 <div className="navbar-options active:bg-yellow-600 bg-yellow-500">
                     <label className=""><ImBooks color='white'size={'3rem'}/></label>
                     <p className="main-sidebar-text">
@@ -121,7 +121,7 @@ import { Link, NavLink } from 'react-router-dom';
                 </div>
             </NavLink>
             
-            <NavLink to="" className="link">
+            <NavLink to="/loanedList" className="link">
                 <div className="navbar-options active:bg-red-700 bg-red-500">
                     <label className=""><RiErrorWarningLine color='white'size={'3rem'}/></label>
                     <p className="main-sidebar-text w-[80%]">

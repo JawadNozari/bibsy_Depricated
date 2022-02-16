@@ -10,14 +10,7 @@ type Props = {
     request: string;
   }
 
-  type Student = {
-    name: string;
-    group: string;
-    email: string;
-    img: string;
-    phone: string;
-    loanedBooks: [Book, Book, Book];
-}
+
 
 type Book  = {
     title: string;
@@ -36,13 +29,20 @@ type ListStyle = {
     imgStyle: string;
     svgStyle: string;
 }
+type student = {
+      
+    FirstName: string;
+    LastName: string;
+    Email: string;
+
+}
 //List component, modular by passing in props
 const List = (props: Props) => {
 
 const listStyle: ListStyle = {
     theadStyle: 'flex flex-row items-center bg-lila h-[10%] text-3xl text-left text-white rounded-t-2xl pl-5',
     trStyle: 'w-full h-auto odd:bg-white even:bg-ljusLila p-5 flex flex-row',
-    tdStyle: 'p-3',
+    tdStyle: 'p-3 mr-[3%]',
     imgStyle: 'w-[10%] h-auto',
     svgStyle: 'h-[100%] ml-5',
 }
@@ -59,12 +59,23 @@ const listStyle: ListStyle = {
     //Runs only on first update
     useEffect(() => {
         //fetching data
-        getData("http://localhost:3001/" + props.request)
-        .then((res) => {
-            setData(res);
-        });
+        let fakeData: student ={
+            FirstName:"Dejans Tjej",
+            LastName:"Dejansson",
+            Email: "defghj@gmailk.com"
 
-        //setData(books);
+        }
+        setData(fakeData);
+        // getData("http://localhost:3001/" + props.request)
+        // .then((res) => {
+            
+           
+            
+        //     console.log(data);
+
+        // });
+
+        //setData(setIsStudents);
         //Determine what is passed in through props
         if (props.typeOf === 'Staff') {
             setIsStaff(true);
@@ -74,7 +85,7 @@ const listStyle: ListStyle = {
             setIsBorrowedBooks(false);
             setIsMissingBooks(false);
         }
-        else if (props.typeOf === 'Students') {
+        else if (props.typeOf === 'students') {
             setIsStudents(true);
             setIsStaff(false);
             setIsAllBooks(false);
@@ -128,26 +139,23 @@ const listStyle: ListStyle = {
                 </div>
                 <div className="h-[90%] overflow-y-auto rounded-2xl">
                     {/*Loops through each person that was fetched from the db*/}
-                    {data.map((item: Student, index: Number) => {
+                    { console.log("item0")}
+                    {data.map((item: student, index: Number) => {
+                         
                         return (
                         <div className={listStyle.trStyle} key={index.toString()}>
                             <div className={listStyle.tdStyle}>
-                                {item.name}
+                                {item.FirstName + " " + item.LastName}
                             </div>
                             <div className={listStyle.tdStyle}>
-                                {item.email}
-                            </div>
-                            <div className={listStyle.tdStyle}>
-                                {item.phone}
-                            </div>
-                            <div className={listStyle.tdStyle}>
-                                {item.loanedBooks.length}
+                                {item.Email}
                             </div>
                         </div>)
                     })}
                 </div>
             </div></>}
-            {isStudents && <><div className="h-[100%] w-[100%] bg-white rounded-2xl">
+            {isStudents && <>
+            <div className="h-[100%] w-[100%] bg-white rounded-2xl">
                 <div className={listStyle.theadStyle}>
                     <div className={listStyle.tdStyle}>Name</div>
                     <div className={listStyle.tdStyle}>Class</div>
@@ -157,30 +165,26 @@ const listStyle: ListStyle = {
                 </div>
                 <div className="h-[90%] overflow-y-auto rounded-2xl">
                     {/*Loops through each person that was fetched from the db*/}
-                    {data.map((item: Student, index: Number) => {
+                    { console.log("item0  www")}
+                    {data.map((item: student, index: Number) => {
+                        console.log("item");
                         return (
                         <div className={listStyle.trStyle} key={index.toString()}>
                             <div className={listStyle.tdStyle}>
-                                {item.name}
+                                {item.FirstName}
                             </div>
                             <div className={listStyle.tdStyle}>
-                                {item.group}
+                                {item.LastName}
                             </div>
                             <div className={listStyle.tdStyle}>
-                                {item.email}
-                            </div>
-                            <div className={listStyle.tdStyle}>
-                                {item.phone}
-                            </div>
-                            <div className={listStyle.tdStyle}>
-                                {item.loanedBooks.length}
+                                {item.Email}
                             </div>
                         </div>)
                     })}
                 </div>
             </div></>}
             
-            {isAllBooks && <><div className="h-[100%] w-full rounded">
+            {isAllBooks && <><div className="h-[100%] w-full rounded-2xl bg-white">
                 <div className="grid items-center bg-gul h-[10%] text-3xl text-left text-white rounded-t-2xl pl-5">
                     Books
                 </div>
@@ -401,7 +405,8 @@ const listStyle: ListStyle = {
                         )
                     })}
                 </div>
-            </div></>}
+            </div>
+            </>}
         </div>
     );
 }

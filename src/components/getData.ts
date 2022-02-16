@@ -1,9 +1,8 @@
 import axios from "axios";
 
 const getData = async (url: string) => {
-
     const res:any = await axios
-    .get(url)
+    .request({url:url,headers:{"*":"*"}})
     .catch((error) => {
         console.error(error);
     });
