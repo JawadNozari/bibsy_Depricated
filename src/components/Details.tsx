@@ -224,10 +224,10 @@ const Details = () => {
                 //Setdata and update jsx
                 setBook(res);
                 
-                setTitle(res.FirstName);
-                setAuthor(res.LastName);
-                setLanguage(res.Email);
-                setPublisher(res.PhoneNumber);
+                setTitle(res.Title);
+                setAuthor(res.Author);
+                setLanguage(res.Language);
+                setPublisher(res.Publisher);
                 
             })
             .catch();
@@ -388,22 +388,54 @@ const Details = () => {
                     {/* Displaying a book */}
                     {isBook && <>
 
-                        <div className="flex flex-row space-x-16">
-                            <div>Titel</div>
-                            <div>Author</div>
-                            <div>Publisher</div>
-                            <div>Language</div>
-                        </div>
+                        {!isEditing && <>
+                            <div className="flex flex-row space-x-16">
+                                <div>Titel</div>
+                                <div>Author</div>
+                                <div>Publisher</div>
+                                <div>Language</div>
+                            </div>
 
-                        {/* Displays when data is set => when data is returned from db */}
-                        {book && 
+                            {/* Displays when data is set => when data is returned from db */}
+                            {book && 
 
-                        <div className="flex flex-row space-x-16">
-                            <div>{book.Title + " " + book.Author}</div>
-                            <div>{book.Author}</div>
-                            <div>{book.Publisher}</div>
-                            <div>{book.Language}</div>
-                        </div>}
+                            <div className="flex flex-row space-x-16">
+                                <div>{title}</div>
+                                <div>{author}</div>
+                                <div>{publisher}</div>
+                                <div>{language}</div>
+                            </div>}
+                        </>}
+
+                        {isEditing && <>
+                            <div className="flex flex-row space-x-16">
+                                <div>Titel</div>
+                                <div>Author</div>
+                                <div>Publisher</div>
+                                <div>Language</div>
+                            </div>
+
+                            {/* Displays when data is set => when data is returned from db */}
+                            {book && 
+
+                            <div className="flex flex-row space-x-16">
+                                <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}/>
+                                <input type="text" value={author} onChange={(e) => setTitle(e.target.value)}/>
+                                <input type="text" value={publisher} onChange={(e) => setTitle(e.target.value)}/>
+                                <input type="text" value={language} onChange={(e) => setTitle(e.target.value)}/>
+                            </div>}
+                        </>}
+
+                        {/* Button to finish editing user and save to database, only Admin can see it */}
+                        {isAdmin && <div className="bg-blue-500 b-[0%]">
+                                    <button className="bg-lila h-[10vh] w-[10vh] rounded-full" onClick={() => {
+                                        setBookChanges();
+                                        submitChange();
+                                    }}>
+                                        <IoIosSave className="flex m-auto" color='white'size={'2rem'} />
+                                    </button>
+                                </div>}
+
                     </>}
                 </div>
             </div>
