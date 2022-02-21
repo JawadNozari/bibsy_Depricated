@@ -30,10 +30,10 @@ type Staff = {
 }
 
 type Book  = {
-    title: string;
-    author: string;
-    published: string;
-    isbn: string;
+    Title: string;
+    Author: string;
+    Publisher: string;
+    ISBN: string;
     amount: number;
     loaned: number;
     inStock: boolean
@@ -196,43 +196,43 @@ const listStyle: ListStyle = {
                     {data.map((item: Book, index: Number) => {
                         return (
                             <div className={`w-[100%] odd:bg-white even:bg-ljusGul p-5 flex flex-row justify-between`} key={String(index)}>
-                                <div className={listStyle.imgStyle}>
-                                    <img src={'https://image.bokus.com/images/'+ item.isbn} alt={'Omslag till boken '+item.title} />
-                                </div>
+                                <Link to={"/details/book/" + item.ISBN} className={listStyle.imgStyle}>
+                                    <img src={'https://image.bokus.com/images/'+ item.ISBN} alt={'Omslag till boken '+item.Title} />
+                                </Link>
                                 
                                 {/*All books*/}
-                                <Link to={"/details/book/" + item.isbn} className="p-3 w-[60%]">
-                                    <h4 className="p-2 font-bold">Title: {item.title}</h4>
-                                    <h4 className="p-2">Author: {item.author}</h4>
-                                    <h4 className="p-2">Published: {item.published}</h4>
+                                <Link to={"/details/book/" + item.ISBN} className="p-3 w-[60%]">
+                                    <h4 className="p-2 font-bold">Title: {item.Title}</h4>
+                                    <h4 className="p-2">Author: {item.Author}</h4>
+                                    <h4 className="p-2">Published: {item.Publisher}</h4>
                                     <h4 className="p-2">Amount: {item.amount}</h4>
                                 </Link>
                                 <div className="flex flex-col justify-center align-center w-[30%]">
                                     
                                     {/*If there are items in stock*/}
                                     {(item.inStock) && <>
-                                        <div className='flex flex-row justify-center align-center h-[15%] text-3xl'>
+                                        <Link to={"/details/book/" + item.ISBN}className='flex flex-row justify-center align-center h-[15%] text-3xl'>
                                             <div className="items-center grid mr-5">
                                                 <p className="align-middle">Available: {item.amount-item.loaned}</p>
                                             </div>
                                             <div className="items-center grid">
                                                 <BsCheckLg color='green' />
                                             </div>
-                                        </div>
-                                        <div className="flex justify-center">
+                                        </Link>
+                                        <Link to={"/details/book/" + item.ISBN}className="flex justify-center">
                                             <p>Loaned: {item.loaned}</p> 
-                                        </div>
+                                        </Link>Link
                                     </>}
                                     {/*If there are no items in stock*/}
                                     {!(item.inStock) && 
-                                    <div className='flex flex-row justify-center align-center h-[15%] text-3xl'>
+                                    <Link to={"/details/book/" + item.ISBN} className='flex flex-row justify-center align-center h-[15%] text-3xl'>
                                         <div className="items-center grid mr-5">
                                             <p>Out of stock</p>
                                         </div>
                                         <div className="items-center grid">
                                             <TiTimes color='red'/>
                                         </div>
-                                    </div>}
+                                    </Link>}
                                     
                                 </div>
 
@@ -251,31 +251,31 @@ const listStyle: ListStyle = {
                     {data.map((item: Book, index: Number) => {
                         return (
                             <div className={`w-[100%] odd:bg-white even:bg-ljusgrön p-5 flex flex-row justify-between`} key={String(index)}>
-                                <div className={listStyle.imgStyle}>
-                                    <img src={'https://image.bokus.com/images/'+ item.isbn} alt={'Omslag till boken '+item.title} />
-                                </div>
+                                <Link to={"/details/book/" + item.ISBN} className={listStyle.imgStyle}>
+                                    <img src={'https://image.bokus.com/images/'+ item.ISBN} alt={'Omslag till boken '+item.Title} />
+                                </Link>
                                 
-                                    <div className="p-3 w-[60%]">
-                                        <h4 className="p-2 font-bold">Title: {item.title}</h4>
-                                        <h4 className="p-2">Author: {item.author}</h4>
-                                        <h4 className="p-2">Published: {item.published}</h4>
+                                    <Link to={"/details/book/" + item.ISBN} className="p-3 w-[60%]">
+                                        <h4 className="p-2 font-bold">Title: {item.Title}</h4>
+                                        <h4 className="p-2">Author: {item.Author}</h4>
+                                        <h4 className="p-2">Publisher: {item.Publisher}</h4>
                                         <h4 className="p-2">Amount: {item.amount}</h4>
-                                    </div>
+                                    </Link>
                                     <div className="flex flex-col justify-center align-center w-[30%]">
                                         
                                         {/*If there are items in stock*/}
                                         {(item.inStock) && <>
-                                            <div className='flex flex-row justify-center align-center h-[15%] text-3xl'>
+                                            <Link to={"/details/book/" + item.ISBN} className='flex flex-row justify-center align-center h-[15%] text-3xl'>
                                                 <div className="items-center grid mr-5">
                                                     <p className="align-middle">Available: {item.amount-item.loaned}</p>
                                                 </div>
                                                 <div className="items-center grid">
                                                     <BsCheckLg color='green' />
                                                 </div>
-                                            </div>
-                                            <div className="flex justify-center">
+                                            </Link>
+                                            <Link to={"/details/book/" + item.ISBN} className="flex justify-center">
                                                 <p>Loaned: {item.loaned}</p> 
-                                            </div>
+                                            </Link>
                                         </>}
                                     </div>
                             </div>
@@ -294,42 +294,42 @@ const listStyle: ListStyle = {
                     {data.map((item: Book, index: Number) => {
                         return (
                             <div className={`w-[100%] odd:bg-white even:bg-ljusblå p-5 flex flex-row justify-between`} key={String(index)}>
-                                <div className={listStyle.imgStyle}>
-                                    <img src={'https://image.bokus.com/images/'+ item.isbn} alt={'Omslag till boken '+item.title} />
-                                </div>
+                                <Link to={"/details/book/" + item.ISBN} className={listStyle.imgStyle}>
+                                    <img src={'https://image.bokus.com/images/'+ item.ISBN} alt={'Omslag till boken '+item.Title} />
+                                </Link>
                                 
                                 {/*Borrowed books*/}
-                                <div className="p-3 w-[60%]">
-                                    <h4 className="p-2 font-bold">Title: {item.title}</h4>
-                                    <h4 className="p-2">Author: {item.author}</h4>
-                                    <h4 className="p-2">Published: {item.published}</h4>
+                                <Link to={"/details/book/" + item.ISBN} className="p-3 w-[60%]">
+                                    <h4 className="p-2 font-bold">Title: {item.Title}</h4>
+                                    <h4 className="p-2">Author: {item.Author}</h4>
+                                    <h4 className="p-2">Publisher: {item.Publisher}</h4>
                                     <h4 className="p-2">Amount: {item.amount}</h4>
-                                </div>
+                                </Link>
                                 <div className="flex flex-col justify-center align-center w-[30%]">
                                     
                                     {/*If there are items in stock*/}
                                     {(item.inStock) && <>
-                                        <div className='flex flex-row justify-center align-center h-[15%] text-3xl'>
+                                        <Link to={"/details/book/" + item.ISBN} className='flex flex-row justify-center align-center h-[15%] text-3xl'>
                                             <div className="items-center grid mr-5">
                                                 <p className="align-middle">Available: {item.amount-item.loaned}</p>
                                             </div>
                                             <div className="items-center grid">
                                                 <BsCheckLg color='green' />
                                             </div>
-                                        </div>
-                                        <div className="flex justify-center">
+                                        </Link>
+                                        <Link to={"/details/book/" + item.ISBN} className="flex justify-center">
                                             <p>Loaned: {item.loaned}</p> 
-                                        </div>
+                                        </Link>
                                     </>}
                                     {/*If there are not items in stock*/}
                                     {!(item.inStock) && 
                                     <div className='flex flex-row justify-center align-center h-[15%] text-3xl'>
-                                        <div className="items-center grid mr-5">
+                                        <Link to={"/details/book/" + item.ISBN} className="items-center grid mr-5">
                                             <p>Out of stock</p>
-                                        </div>
-                                        <div className="items-center grid">
+                                        </Link>
+                                        <Link to={"/details/book/" + item.ISBN} className="items-center grid">
                                             <TiTimes color='red'/>
-                                        </div>
+                                        </Link>
                                     </div>}
                                     
                                 </div>
@@ -351,42 +351,42 @@ const listStyle: ListStyle = {
                     {data.map((item: Book, index: Number) => {
                         return (
                             <div className={`w-[100%] odd:bg-white even:bg-ljusblå p-5 flex flex-row justify-between`} key={String(index)}>
-                                <div className={listStyle.imgStyle}>
-                                    <img src={'https://image.bokus.com/images/'+ item.isbn} alt={'Omslag till boken '+item.title} />
-                                </div>
+                                <Link to={"/details/book/" + item.ISBN} className={listStyle.imgStyle}>
+                                    <img src={'https://image.bokus.com/images/'+ item.ISBN} alt={'Omslag till boken '+item.Title} />
+                                </Link>
                                 
                                 {/*Missing books*/}
-                                <div className="p-3 w-[60%]">
-                                    <h4 className="p-2 font-bold">Title: {item.title}</h4>
-                                    <h4 className="p-2">Author: {item.author}</h4>
-                                    <h4 className="p-2">Published: {item.published}</h4>
-                                </div>
+                                <Link to={"/details/book/" + item.ISBN} className="p-3 w-[60%]">
+                                    <h4 className="p-2 font-bold">Title: {item.Title}</h4>
+                                    <h4 className="p-2">Author: {item.Author}</h4>
+                                    <h4 className="p-2">Publisher: {item.Publisher}</h4>
+                                </Link>
                                 <div className="flex flex-col justify-center align-center w-[30%]">
                                     
                                     {/*If there are items in stock*/}
                                     {(item.inStock) && <>
-                                        <div className='flex flex-row justify-center align-center h-[15%] text-3xl'>
+                                        <Link to={"/details/book/" + item.ISBN} className='flex flex-row justify-center align-center h-[15%] text-3xl'>
                                             <div className="items-center grid mr-5">
                                                 <p className="align-middle">Available: {item.amount-item.loaned}</p>
                                             </div>
                                             <div className="items-center grid">
                                                 <BsCheckLg color='green' />
                                             </div>
-                                        </div>
-                                        <div className="flex justify-center">
+                                        </Link>
+                                        <Link to={"/details/book/" + item.ISBN} className="flex justify-center">
                                             <p>Loaned: {item.loaned}</p> 
-                                        </div>
+                                        </Link>
                                     </>}
                                     {/*If there are not items in stock*/}
                                     {!(item.inStock) && 
-                                    <div className='flex flex-row justify-center align-center h-[15%] text-3xl'>
+                                    <Link to={"/details/book/" + item.ISBN} className='flex flex-row justify-center align-center h-[15%] text-3xl'>
                                         <div className="items-center grid mr-5">
                                             <p>Out of stock</p>
                                         </div>
                                         <div className="items-center grid">
                                             <TiTimes color='red'/>
                                         </div>
-                                    </div>}
+                                    </Link>}
                                     
                                 </div>
 
