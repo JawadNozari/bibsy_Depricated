@@ -17,13 +17,13 @@ type ListStyle = {
     imgStyle: string;
     svgStyle: string;
 }
-type student = {
+type staff = {
     FirstName: string;
     LastName: string;
     Email: string;
 }
 //List component, modular by passing in props
-const ListStudent = () => {
+const staffList = () => {
 
     // //Data from db to useState
     // const [data, setData] = useState<any>([]);
@@ -46,18 +46,18 @@ const ListStudent = () => {
 
     //     // });
     // }, []);
-    let data: student[] = [
-        {
-            FirstName:"Dejans Tjej",
-            LastName:"Dejansson",
-            Email: "cfvgbhjk@gmail.com"
-        },
-        {
-            FirstName:"Dejans Tjej number 2",
-            LastName:"Dejansson",
-            Email: "rtyui5678@gmaiuo.com"
-        },
-    ]
+    // let data: student[] = [
+    //     {
+    //         FirstName:"Dejans Tjej",
+    //         LastName:"Dejansson",
+    //         Email: "cfvgbhjk@gmail.com"
+    //     },
+    //     {
+    //         FirstName:"Dejans Tjej number 2",
+    //         LastName:"Dejansson",
+    //         Email: "rtyui5678@gmaiuo.com"
+    //     },
+    // ]
 
 
     return (
@@ -71,7 +71,7 @@ const ListStudent = () => {
             </div>
             <div className="h-[90%] overflow-y-auto rounded-2xl">
                 {/*Loops through each person that was fetched from the db*/}
-                {console.log(data)}
+                {/* {console.log(data)}
                 {data.map((student: student, index: Number) => {
                     console.log(student);
 
@@ -87,7 +87,7 @@ const ListStudent = () => {
                             {student.Email}
                         </div>
                     </div>)
-                })}
+                })} */}
             </div>
         </div>
     );
@@ -100,4 +100,4 @@ const listStyle: ListStyle = {
     imgStyle: 'w-[10%] h-auto',
     svgStyle: 'h-[100%] ml-5',
 }
-export default ListStudent;
+export default staffList;

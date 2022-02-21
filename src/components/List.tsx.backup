@@ -655,7 +655,6 @@
 //                             <div className="grid items-center">
 //                               <BsCheckLg color="green" />
 //                             </div>
-// <<<<<<< HEAD
 //                           </div>
 //                           <div className="flex justify-center">
 //                             <p>Loaned: {item.loaned}</p>
@@ -684,15 +683,6 @@
 //     </div>
 //   );
 // };
-// =======
-//                         )
-//                     })}
-//                 </div>
-//             </div>
-//             </>}
-//         </div>
-//     );
-// }
-// >>>>>>> 55082df99925f31093481699e609138481c6e35f
+
 
 // export default List;
