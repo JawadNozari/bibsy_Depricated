@@ -7,6 +7,7 @@ const UseAxios = async (url: string, body: any) => {
 
     .catch((error) => {
         console.error(error);
+        return null;
     });
     
    return res.data;

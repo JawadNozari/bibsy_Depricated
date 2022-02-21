@@ -2,7 +2,7 @@ import React, { useEffect,  useState } from "react";
 import {BsCheckLg} from 'react-icons/bs';
 import {TiTimes} from 'react-icons/ti';
 import getData from "./getData";
-import { Link,  } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 type Props = {
     mainColor: string;
@@ -46,6 +46,7 @@ type ListStyle = {
     imgStyle: string;
     svgStyle: string;
 }
+
 //List component, modular by passing in props
 const List = (props: Props) => {
 
@@ -69,7 +70,7 @@ const listStyle: ListStyle = {
     //Runs only on first update
     useEffect(() => {
         //fetching data
-        getData("http://localhost:3001/" + props.request)
+        getData("http://Williams-macbook-pro.local:3001/" + props.request)
         .then((res) => {
             setData(res);
             console.log(res);

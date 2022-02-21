@@ -9,7 +9,7 @@ import {
 
 import SignInWidget from './SignIn_Widgetv2';
 import MainNavbar from './MainNavbar';
-import Navbar from './Navbar';
+//import Navbar from './Navbar';
 import Register from './Register';
 import ReturnAndBorrow from './ReturnAndBorrow';
 import DocumentMeta from "react-document-meta";
