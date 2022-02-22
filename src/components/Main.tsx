@@ -44,6 +44,8 @@ const Main = () => {
 
     const { token, setToken } = UseToken();
 
+    
+
 
 
     return (
@@ -58,7 +60,7 @@ const Main = () => {
 
             <Routes>
 
-                {(!token) ? useNavigate("/") : null}
+                {(!token) ? navigate("/") : null}
         
                 {/*Sign in page*/}
                 <Route path="/" element={(
