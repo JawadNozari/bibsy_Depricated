@@ -1,7 +1,10 @@
+//Module imports for this file.
 import { RiLockPasswordFill } from "react-icons/ri";
 import { FaUser } from "react-icons/fa";
 import ntilogo from "../../assets/images/NTI-Gymnasiet.svg";
 import bg0 from "../../assets/images/vector3.svg";
+
+//Following will be rendered.
 const SignInMobile = () => {
   return (
     <div className="jusitfy-center bg-realshiiii h-full w-screen items-center ">
@@ -62,4 +65,5 @@ const SignInMobile = () => {
     </div>
   );
 };
+//What actually renders this file. :D
 export default SignInMobile;

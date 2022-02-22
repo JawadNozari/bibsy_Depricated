@@ -1,3 +1,4 @@
+//Imports components from modules.
 import React, { useEffect, useState } from "react";
 import { FiUsers } from "react-icons/fi";
 import { ImBooks } from "react-icons/im";
@@ -6,6 +7,7 @@ import { RiErrorWarningLine } from "react-icons/ri";
 import { RiDashboardLine } from "react-icons/ri";
 import { Link, NavLink } from "react-router-dom";
 
+//What is to be rendered.
 const MainNavbar = (props: any) => {
   //     const [] = useEffect<>();
 
@@ -31,6 +33,7 @@ const MainNavbar = (props: any) => {
 
   //    }, []);
 
+  //Renders the site. 
   return (
     <>
       {/*BIG BUTTONS*/}
@@ -172,4 +175,5 @@ const MainNavbar = (props: any) => {
     </>
   );
 };
+//Implements the rendering. 
 export default MainNavbar;
