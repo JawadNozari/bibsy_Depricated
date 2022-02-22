@@ -120,6 +120,12 @@ export const studentTableConfig = () => {
                 headerName: 'Title',
                 width: 100,
                 sortable: true,
+            },{
+                field: 'NTI_s_ID',
+                headerName: 'NTI ID',
+                width: 100,
+                sortable: true,
+                'type': 'number',
             },
             {
                 field: 'ISBN',
@@ -152,4 +158,56 @@ export const studentTableConfig = () => {
         ];
     }
 
+    export const borrowedTableConfig = () => {
+        return [
+            {
+                field: 'Cover',
+                headerName: 'Cover',
+                width: 150,
+                height: 300,
+                sortable: true,
+                renderCell: (params: any) => <img src={params.value}/>,
+            },
+            {
+                field: 'Title',
+                headerName: 'Title',
+                width: 100,
+                sortable: true,
+            },{
+                field: 'NTI_s_ID',
+                headerName: 'NTI ID',
+                width: 100,
+                sortable: true,
+                'type': 'number',
+            },
+            {
+                field: 'ISBN',
+                headerName: 'ISBN',
+                width: 100,
+                sortable: true,
+                'type': 'number',
+            },
+            {
+                field: 'Author',
+                headerName: 'Author',
+                sortable: true,
+                width: 100,
+                editable: false,
+            },
+            {
+                field: 'Language',
+                headerName: 'Language',
+                width: 100,
+                sortable: true,
+                editable: false,
+            },
+            {
+                field: 'Publish_Date',
+                headerName: 'Publish_Date',
+                width: 100,
+                sortable: true,
+                editable: false,
+            },
+        ];
+    }
 export default studentTableConfig;
