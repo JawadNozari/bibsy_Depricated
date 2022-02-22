@@ -4,27 +4,65 @@ import {FaUser} from 'react-icons/fa';
 import ntilogo from "../assets/images/NTI-Gymnasiet.svg";
 import UseAxios from './UseAxios'
 import axios from 'axios';
+import { response } from 'express';
+import PropTypes from 'prop-types';
+import { useNavigate }  from 'react-router-dom';
 
+async function loginUser(credentials: any) {
+    return fetch('http://192.168.198.81:2398/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(credentials)
+    })
+      .then(data => data.json())
+}
 
-const SignInWidget = () => {
+const SignInWidget = ( {setToken}:any ) => {
+
+    const navigate = useNavigate();
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const submitFormSignIn = (event:any) => {
-      event.preventDefault();
-      let SignIn = {
-        id:        username,
-        pass:       password,
-      }
-    console.log("FrontEnd:");
-    console.log(SignIn);
-    axios.post('http://192.168.198.153:2398/login', SignIn).then(res => {
-        console.log((res.data));
-    }).catch(err => {
-        console.log(err);
-    }
-    );
+
+    const submitFormSignIn = async(event:any) => {
+        event.preventDefault();
+        let SignIn = {
+            id:        username,
+            pass:       password,
+        }
+
+        console.log("FrontEnd:");
+        console.log(SignIn);
+
+        axios.post('http://localhost:2398/login', SignIn)
+            .then(res => {
+                console.log("Backend: ")
+                console.log((res));
+                if(res.data.redirect) {
+                    console.log("Redirect!");
+
+                    setToken(token);
+
+                    navigate("/dashboard");
+                }
+                else {
+                    alert("Inte episk vinst");
+                }
+
+            }).catch(err => {
+                console.error(err);
+            }
+        );
+    const token = await loginUser({
+      username,
+      password
+    });
+
+    setToken(token);
 }
+
 
     return (       
         <div className="container grid bg-pp mx-auto my-auto rounded-2xl w-auto lg:w-[25%] md:w-[40%] sm:w-[60%] xs:w-[80%] -z-[0]">
@@ -58,4 +96,7 @@ const SignInWidget = () => {
     );
     };
     
+    SignInWidget.propTypes = {
+        setToken: PropTypes.func.isRequired
+      }
 export default SignInWidget;
