@@ -141,7 +141,7 @@ const Details = () => {
         }
 
         else if (isBook) {
-            UseAxios("http://localhost:3001/staffPermissions/", book);
+            UseAxios("http://Williams-macbook-pro.local:3001/staffPermissions/", book);
         }
     }
 
@@ -155,7 +155,7 @@ const Details = () => {
             setIsStudent(false);
             setIsBook(false);
             //First get permissions for specified user
-            getData("http://localhost:3001/staffPermissions/" + PID)
+            getData("http://Williams-macbook-pro.local:3001/staffPermissions/" + PID)
             .then((res) => {
                console.log(res);
                setStaffPermissions(res);
@@ -166,7 +166,7 @@ const Details = () => {
                 setAccessToServer(res.AccessToServer);
 
                //Get data from db where category tells api what to do with the specified ID that can either be a book isbn or member ID
-                getData("http://localhost:3001/staff/" + PID)
+                getData("http://Williams-macbook-pro.local:3001/staff/" + PID)
                 .then((respon) => {
 
                     //Setdata and update jsx
@@ -239,7 +239,7 @@ const Details = () => {
 
     return(
         <> 
-            <div className="w-[100%] h-[100%] bg-white rounded-r-2xl z-10">
+            <div className="w-[100%] h-[100%] bg-white rounded-2xl z-10">
                 <div className="w-[80%] h-[100%] py-5  flex flex-col mx-auto">
                     {/* Displaying a staff memeber */}
                     {isStaff && <>
@@ -428,7 +428,7 @@ const Details = () => {
 
                         {/* Button to finish editing user and save to database, only Admin can see it */}
                         {isAdmin && <div className="bg-blue-500 b-[0%]">
-                                    <button className="bg-lila h-[10vh] w-[10vh] rounded-full" onClick={() => {
+                                    <button className="bg-gul h-[10vh] w-[10vh] rounded-full" onClick={() => {
                                         setBookChanges();
                                         submitChange();
                                     }}>
