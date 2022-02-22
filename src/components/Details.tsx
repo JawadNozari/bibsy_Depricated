@@ -34,6 +34,8 @@ type Permission = {
     AccessToServer: boolean;
 }
 
+const ip = "http://Williams-macbook-pro.local:3001";
+
 const Details = () => {
 
     let placeHolderPermission: Permission = {
@@ -125,10 +127,10 @@ const Details = () => {
 
         if (isStaff) {
             console.log("staff sub");
-            UseAxios("http://localhost:3001/updateStaff/", member)
+            UseAxios(ip + "/updateStaff/", member)
             .then(() => {
                 console.log("Updated staff");
-                UseAxios("http://localhost:3001/updatePermissions/", staffPermissions)
+                UseAxios(ip + "/updatePermissions/", staffPermissions)
                 .then(() => {
                     console.log("Updated permissions");
                 });
@@ -137,11 +139,11 @@ const Details = () => {
         }
 
         else if (isStudent) {
-            UseAxios("http://localhost:3001/updateStudent/", member);
+            UseAxios(ip + "/updateStudent/", member);
         }
 
         else if (isBook) {
-            UseAxios("http://Williams-macbook-pro.local:3001/staffPermissions/", book);
+            UseAxios(ip + "/staffPermissions/", book);
         }
     }
 
@@ -155,7 +157,7 @@ const Details = () => {
             setIsStudent(false);
             setIsBook(false);
             //First get permissions for specified user
-            getData("http://Williams-macbook-pro.local:3001/staffPermissions/" + PID)
+            getData(ip + "/staffPermissions/" + PID)
             .then((res) => {
                console.log(res);
                setStaffPermissions(res);
@@ -165,8 +167,8 @@ const Details = () => {
                 setAccessToUser(res.AccessToUser);
                 setAccessToServer(res.AccessToServer);
 
-               //Get data from db where category tells api what to do with the specified ID that can either be a book isbn or member ID
-                getData("http://Williams-macbook-pro.local:3001/staff/" + PID)
+                //Get data from db where category tells api what to do with the specified ID that can either be a book isbn or member ID
+                getData(ip + "/staff/" + PID)
                 .then((respon) => {
 
                     //Setdata and update jsx
@@ -197,7 +199,7 @@ const Details = () => {
             setIsBook(false);
 
             //Get data from db where category tells api what to do with the specified ID that can either be a book isbn or member ID
-            getData("http://localhost:3001/" + category + "/" + PID)
+            getData(ip + category + "/" + PID)
             .then((res) => {
 
                 //Setdata and update jsx

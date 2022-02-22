@@ -2,6 +2,9 @@ import React, {useState} from "react";
 import {GiArchiveRegister} from "react-icons/gi";
 import getData from "./getData";
 import UseAxios from './UseAxios';
+import axios from "axios";
+
+const bookCoverDefault = "https://image.bokus.com/images/";
 
 
  const Register = (props : any) => {
@@ -23,7 +26,7 @@ import UseAxios from './UseAxios';
     const [coverLink, setCoverLink] = useState<string>('');
     const [description, setDescription] = useState<string>('');
     const [language, setLanguage] = useState<string>('');
-    const [pages, setPages] = useState<string>('');
+    const [pages, setPages] = useState<number>(0);
 
     const [ISBN, setISBN] = useState<string>('');
 
@@ -31,9 +34,15 @@ import UseAxios from './UseAxios';
         getData("http://Williams-macbook-pro.local:3001/bookTemplate/" + ISBN)
         .then((data) => {
             console.log(data);
-            setBookName(data.Name);
-            setPublisher(data.Company);
-            setCoverLink("https://image.bokus.com/images/" + ISBN);
+            setBookName(data.title);
+            setPublisher(data.publisher);
+            setAuthor(data.author);
+            setDescription(data.description);
+            setLanguage(data.language);
+            setPublishDate(new Date(data.year));
+            setPlaceHolderDate(data.year);
+            setPages(Number(data.pages));
+            setCoverLink(bookCoverDefault + ISBN);
         })
         
     }
@@ -55,8 +64,14 @@ import UseAxios from './UseAxios';
         desc: description,
         pages: pages,
       }
-
-      UseAxios("http://Williams-macbook-pro.local:3001/registerBook", book);
+      axios.post("http://Williams-macbook-pro.local:3001/registerBook", book)
+      .then((res) => {
+        console.log(res.status);
+      })
+      .catch((err) => {
+          console.error(err);
+      })
+      //UseAxios("http://Williams-macbook-pro.local:3001/registerBook", book);
     }
 
     const submitFormStudent = (event: React.FormEvent<HTMLFormElement>) => {
@@ -111,22 +126,24 @@ import UseAxios from './UseAxios';
                     <h1 className=" text-3xl p-10 ml-[25%] mt-[5%]" >Registrera din bok</h1>
                         
                         {/* ger inputen ett värde och sedan lagrar den till useState */}
-                        <input className="bookInput" type="number" placeholder="NTI ID"   value={ntiID} onChange={(e) => setNtiID(e.target.value)}/>
+                        <input className="bookInput" type="number"  placeholder="NTI ID"        value={ntiID}onChange={(e) => setNtiID(e.target.value)}/>
 
-                        <input className="bookInput" type="text" placeholder="Book Title"   value={bookName} onChange={(e) => setBookName(e.target.value)}/>
+                        <input className="bookInput" type="text"    placeholder="Book Title"    value={bookName}onChange={(e) => setBookName(e.target.value)}/>
                         
-                        <input className="bookInput" type="date" placeholder="Published"    value={placeHolderDate} onChange={(e) => {{setPlaceHolderDate(e.target.value); setPublishDate(new Date(e.target.value))}}}/>
+                        <input className="bookInput" type="date"    placeholder="Published"     value={placeHolderDate} onChange={(e) => {{setPlaceHolderDate(e.target.value); setPublishDate(new Date(e.target.value))}}}/>
 
-                        <input className="bookInput" type="text" placeholder="Author"       value={author} onChange={(e) => setAuthor(e.target.value)}/>
+                        <input className="bookInput" type="text"    placeholder="Author"        value={author}onChange={(e) => setAuthor(e.target.value)}/>
                         
-                        <input className="bookInput" type="text" placeholder="Description"  value={description} onChange={(e) => setDescription(e.target.value)}/>
+                        <input className="bookInput" type="text"    placeholder="Description"   value={description}onChange={(e) => setDescription(e.target.value)}/>
 
-                        <input className="bookInput" type="text" placeholder="Cover"        value={coverLink} onChange={(e) => setCoverLink(e.target.value)}/>
+                        <input className="bookInput" type="text"    placeholder="Cover"         value={coverLink}onChange={(e) => setCoverLink(e.target.value)}/>
 
-                        <input className="bookInput" type="text" placeholder="Publisher"  value={publisher} onChange={(e) => setPublisher(e.target.value)}/>
+                        <input className="bookInput" type="text"    placeholder="Publisher"     value={publisher}onChange={(e) => setPublisher(e.target.value)}/>
 
-                        <input className="bookInput" type="number" placeholder="Pages"       value={pages} onChange={(e) => setPages(e.target.value)}/>
-                    
+                        <input className="bookInput" type="number"  placeholder="Pages"         value={pages}onChange={(e) => setPages(Number(e.target.value))}/>
+
+                        <input className="bookInput" type="text"    placeholder="Language"      value={language}onChange={(e) => setLanguage(e.target.value)}/>
+
                     <input className="m-5 mt-[3%] mb-[10%] w-[66%] p-[1%] rounded-xl" type="text" placeholder="ISBN-Nummer" name="ISBN-Nr" value={ISBN} onChange={(e) => setISBN(e.target.value)}/>
                     <button type="button" className="p-[1%] bg-purple-700 w-[20%] text-white rounded-xl" onClick={() => getInfo()}>Scan</button>
                     <button type="submit" className="p-[1%] bg-purple-700 w-[90%] ml-[3%] text-white rounded-xl">Submit</button>
