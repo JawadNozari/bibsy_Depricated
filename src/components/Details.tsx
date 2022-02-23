@@ -1,7 +1,9 @@
+//Module imports for this file.
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import getData from "./getData";
 
+//Type declaration for this file start here.
 type Param = {
   category: string;
   ID: string;
@@ -20,8 +22,11 @@ type Book = {
   Email: string;
   PhoneNumber: string;
 };
+//Type declarations end here
 
+//Following is to be rendered.
 const Details = () => {
+  //State declarations used for updating info DYNAMICALLY...
   const { category, ID } = useParams<Param>();
 
   const [isStaff, setIsStaff] = useState<boolean>(false);
@@ -31,6 +36,10 @@ const Details = () => {
   const [member, setMember] = useState<Member | null>(null);
   const [book, setBook] = useState<Book | null>(null);
 
+  /*
+    Makes changes to components dynamically when a change has been detected within following components.
+    This helps with resource management & makes the components dynamic.
+  */
   useEffect(() => {
     if (category === "staff") {
       setIsStaff(true);
@@ -59,6 +68,7 @@ const Details = () => {
       .catch();
   });
 
+  //Data to be rendered.
   return (
     <>
       <div className="w-[100%] h-[100%] bg-white z-10">
@@ -97,4 +107,5 @@ const Details = () => {
   );
 };
 
+//Export to actually display the component.
 export default Details;

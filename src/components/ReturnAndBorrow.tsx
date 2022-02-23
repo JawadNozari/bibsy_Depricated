@@ -1,6 +1,8 @@
+//Import components from modules for this file.
 import React, { useState } from "react";
-
 import UseAxios from "./UseAxios";
+
+//State declaration for the following fields.
 const ReturnAndBorrow = (props: any) => {
   const [id, setId] = useState<string>("");
   const [isbn, setIsbn] = useState<any>("");
@@ -9,6 +11,7 @@ const ReturnAndBorrow = (props: any) => {
   const [ntiId, setNtiId] = useState("");
   const [lararId, setLararId] = useState("");
 
+  //A event saved as a const for submission of data to API.
   const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     // Preventing the page from reloading
     event.preventDefault();
@@ -25,6 +28,7 @@ const ReturnAndBorrow = (props: any) => {
     alert("");
   };
 
+  //What to be rendered.
   return (
     <>
       {props.isReturn && (
@@ -214,4 +218,6 @@ const ReturnAndBorrow = (props: any) => {
     </>
   );
 };
+
+//Exports component for rendering.
 export default ReturnAndBorrow;

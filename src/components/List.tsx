@@ -1,9 +1,11 @@
+//Module imports for this file.
 import React, { useEffect, useState } from "react";
 import { BsCheckLg } from "react-icons/bs";
 import { TiTimes } from "react-icons/ti";
 import getData from "./getData";
 import { Link } from "react-router-dom";
 
+//Defines specific datatypes for noted variables.
 type Props = {
   mainColor: string;
   listColor: string;
@@ -11,6 +13,7 @@ type Props = {
   request: string;
 };
 
+//Type declaration for Student variables.
 type Student = {
   ID: number;
   PID: string;
@@ -20,6 +23,7 @@ type Student = {
   PhoneNumber: string;
 };
 
+//Type declaration "Staff" that's used for the staff module.
 type Staff = {
   ID: number;
   PID: string;
@@ -29,6 +33,7 @@ type Staff = {
   PhoneNumber: string;
 };
 
+//Type "Book" declaration limits params datatypes.
 type Book = {
   title: string;
   author: string;
@@ -39,6 +44,7 @@ type Book = {
   inStock: boolean;
 };
 
+//Type "ListStyle" ensures only strings can be written.
 type ListStyle = {
   theadStyle: string;
   trStyle: string;
@@ -46,8 +52,11 @@ type ListStyle = {
   imgStyle: string;
   svgStyle: string;
 };
+
 //List component, modular by passing in props
+//"props" is a type declaration, limiting datatype on params specified with it.
 const List = (props: Props) => {
+  //Style declaration with type "listStyle" passed in. (limits data to specific datatypes.)
   const listStyle: ListStyle = {
     theadStyle:
       "flex flex-row items-center h-[10%] text-3xl text-left text-white rounded-t-2xl ",
@@ -59,6 +68,7 @@ const List = (props: Props) => {
   };
   //Data from db to useState
   const [data, setData] = useState<any>([]);
+  
   //Modularity from props can be set to member or book
   const [isStaff, setIsStaff] = useState<boolean>(false);
   const [isStudents, setIsStudents] = useState<boolean>(false);
@@ -123,10 +133,12 @@ const List = (props: Props) => {
   }, []);
 
   return (
+    //If isStaff is true, do the following.
     <div className="-z-[1] h-[100%] w-[100%] rounded">
       {isStaff && (
         <>
-          <div className="h-[100%] w-[100%] rounded-2xl bg-white">
+          <div className="h-[100%] w-[100%] rounded-2xl bg-white"> 
+          {/* Apply following style for the divs as specified in listStyle. */}
             <div className={listStyle.theadStyle}>
               <div className="bg-lila flex h-[100%] w-[100%] flex-row rounded-t-2xl">
                 <div className={listStyle.tdStyle}>Name</div>
@@ -164,6 +176,7 @@ const List = (props: Props) => {
           </div>
         </>
       )}
+      {/* If "isStudents is true, do the following." */}
       {isStudents && (
         <>
           <div className="h-[100%] w-[100%] rounded-2xl bg-white">
@@ -206,7 +219,7 @@ const List = (props: Props) => {
           </div>
         </>
       )}
-
+      {/* If "isAllBooks" is true, do the following. */}
       {isAllBooks && (
         <>
           <div className="h-[100%] w-full rounded">

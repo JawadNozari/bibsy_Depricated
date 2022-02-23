@@ -1,3 +1,4 @@
+//Import components from modules for this file.
 import { RiLockPasswordFill } from "react-icons/ri";
 import React, { useState } from "react";
 import { FaUser } from "react-icons/fa";
@@ -5,10 +6,15 @@ import ntilogo from "../assets/images/NTI-Gymnasiet.svg";
 import UseAxios from "./UseAxios";
 import axios from "axios";
 
+//Const to be exported later on.
 const SignInWidget = () => {
+  //State declaration
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  
+  //Once form is submitted, following will happen.
   const submitFormSignIn = (event: any) => {
+    //Prevents page reload.
     event.preventDefault();
     let SignIn = {
       id: username,
@@ -16,6 +22,7 @@ const SignInWidget = () => {
     };
     console.log("FrontEnd:");
     console.log(SignIn);
+    //Axios request for node server for manipulation.
     axios
       .post("http://192.168.198.153:2398/login", SignIn)
       .then((res) => {
@@ -26,6 +33,7 @@ const SignInWidget = () => {
       });
   };
 
+  //What to be rendered when exported.
   return (
     <div className="bg-pp xs:w-[80%] container -z-[0] mx-auto my-auto grid w-auto rounded-2xl sm:w-[60%] md:w-[40%] lg:w-[25%]">
       <img
@@ -90,4 +98,5 @@ const SignInWidget = () => {
   );
 };
 
+//Export of "SignInWidget" constant for use as a component.
 export default SignInWidget;

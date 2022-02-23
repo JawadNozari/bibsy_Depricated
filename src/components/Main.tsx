@@ -1,3 +1,4 @@
+//The codes below import exports from their respective modules. 
 import React, { useState } from "react";
 import Theme from "./Theme";
 
@@ -12,6 +13,7 @@ import DocumentMeta from "react-document-meta";
 import List from "./List";
 import Details from "./Details";
 
+// A constant arrow function is created, which will render everything under return. 
 const Main = () => {
   const meta = {
     title: "Bibsy",
@@ -26,9 +28,10 @@ const Main = () => {
       },
     },
   };
-
+  // State. This allows to change information in components. 
   const [isAdmin, setIsAdmin] = useState<boolean>(true);
 
+  //Renders the site. 
   return (
     <div className="flex h-screen w-screen">
       <Router>

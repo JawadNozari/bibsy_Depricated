@@ -1,3 +1,4 @@
+//Import components from modules for this file.
 import { RiLockPasswordFill } from "react-icons/ri";
 import React, { useState } from "react";
 import { FaUser } from "react-icons/fa";
@@ -5,6 +6,7 @@ import ntilogo from "../assets/images/NTI-Gymnasiet.svg";
 import UseAxios from "./UseAxios";
 import axios from "axios";
 
+//Declaration of a constant to be rendered later on.
 const SignInWidget = () => {
   //Lagrar informationen som username och password
   const [username, setUsername] = useState("");
@@ -24,6 +26,7 @@ const SignInWidget = () => {
       pass: password,
     };
     console.log("FrontEnd:  " + JSON.stringify(SignIn));
+    //Makes an AXIOS request to send data to node for interpretation.
     axios
       .request({
         method: "POST",
@@ -56,6 +59,8 @@ const SignInWidget = () => {
 
   // Själva utseendet på sign in
 
+
+  //What to be rendered
   return (
     <div className="bg-pp xs:w-[80%] container -z-[0] mx-auto my-auto grid w-auto rounded-2xl sm:w-[60%] md:w-[40%] lg:w-[25%]">
       <img
@@ -120,4 +125,5 @@ const SignInWidget = () => {
   );
 };
 
+//Exports "SignInWidget" as a module for rendering.
 export default SignInWidget;
