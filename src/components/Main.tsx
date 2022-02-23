@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import Theme from "./Theme";
 
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
 
 import SignInWidget from "./SignIn_Widgetv2";
 import MainNavbar from "./MainNavbar";
@@ -11,6 +16,9 @@ import ReturnAndBorrow from "./ReturnAndBorrow";
 import DocumentMeta from "react-document-meta";
 import List from "./List";
 import Details from "./Details";
+import axios from "axios";
+import { response } from "express";
+import UseToken from "./UseToken";
 
 const Main = () => {
   const meta = {
@@ -29,6 +37,8 @@ const Main = () => {
 
   const [isAdmin, setIsAdmin] = useState<boolean>(true);
 
+  const { token, setToken } = UseToken();
+
   return (
     <div className="flex h-screen w-screen">
       <Router>
@@ -38,12 +48,14 @@ const Main = () => {
           {/* { isAdmin && <Navbar/>  } */}
 
           <Routes>
-            {/* Sign in page */}
+            {/* {!token ? navigator("/") : null} */}
+
+            {/*Sign in page*/}
             <Route
               path="/"
               element={
                 //Displays signin component
-                <SignInWidget />
+                <SignInWidget setToken={setToken} />
               }
             />
 
