@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BiUserCircle } from "react-icons/bi";
 import { FiUsers } from "react-icons/fi";
 import { RiErrorWarningLine } from "react-icons/ri";
@@ -6,7 +6,23 @@ import { RiDashboardLine } from "react-icons/ri";
 import { ImBooks } from "react-icons/im";
 import { Link, NavLink } from "react-router-dom";
 
+import UseToken from "./UseToken";
+import { useNavigate } from "react-router-dom";
+
+
+
 const Navbar = () => {
+  
+  const { token, setToken } = UseToken();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!token) {
+      console.log("false");
+      navigate("/");
+    }
+  })
+
   return (
     // Here is the main component of the navbar
     <div className="bg-adminSidebar  z-10 grid h-[100%] w-[2vw] items-center justify-center overflow-hidden rounded-l-2xl xl:w-[16vw] xl:p-[2vw]">

@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import getData from "./getData";
 
+import UseToken from "./UseToken";
+import { useNavigate } from "react-router-dom";
+
 type Param = {
   category: string;
   ID: string;
@@ -30,8 +33,17 @@ const Details = () => {
 
   const [member, setMember] = useState<Member | null>(null);
   const [book, setBook] = useState<Book | null>(null);
+  
+  const { token, setToken } = UseToken();
+  const navigate = useNavigate();
 
   useEffect(() => {
+
+    if (!token) {
+      console.log("false");
+      navigate("/");
+    }
+
     if (category === "staff") {
       setIsStaff(true);
       setIsStudent(false);

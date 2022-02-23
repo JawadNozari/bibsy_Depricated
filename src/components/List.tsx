@@ -4,6 +4,12 @@ import { TiTimes } from "react-icons/ti";
 import getData from "./getData";
 import { Link } from "react-router-dom";
 
+import UseToken from "./UseToken";
+import { useNavigate } from "react-router-dom";
+
+
+
+
 type Props = {
   mainColor: string;
   listColor: string;
@@ -66,9 +72,17 @@ const List = (props: Props) => {
   const [isAvailableBooks, setIsAvailableBooks] = useState<boolean>(false);
   const [isBorrowedBooks, setIsBorrowedBooks] = useState<boolean>(false);
   const [isMissingBooks, setIsMissingBooks] = useState<boolean>(false);
-
+  
+  const { token, setToken } = UseToken();
+  const navigate = useNavigate();
   //Runs only on first update
   useEffect(() => {
+    
+    if (!token) {
+      console.log("false");
+      navigate("/");
+    }
+
     //fetching data
     getData("http://localhost:3001/" + props.request).then((res) => {
       setData(res);

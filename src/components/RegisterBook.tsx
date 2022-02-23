@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { GiArchiveRegister } from "react-icons/gi";
 import UseAxios from "./UseAxios";
+import UseToken from "./UseToken";
+import { useNavigate } from "react-router-dom";
 
 const RegisterBook = (props: any) => {
   //Lagrar dess informationen som state
@@ -16,6 +18,11 @@ const RegisterBook = (props: any) => {
   const [quantity, setQuantity] = useState("");
 
   const [ISBN, setISBN] = useState("");
+
+  const { token, setToken } = UseToken();
+  
+  const navigate = useNavigate();
+
 
   //Skickar koden till backend med hjälp av Axios, den skickar allt genom en objekt namn
   const submitFormBook = (event: React.FormEvent<HTMLFormElement>) => {
@@ -32,6 +39,16 @@ const RegisterBook = (props: any) => {
 
     UseAxios("192.168.198.144:3001/registerBook", book);
   };
+
+
+useEffect(() => {
+    console.log(token);
+    if (!token) {
+      console.log("false");
+      navigate("/");
+    }
+  }, [])
+
 
   const submitFormStudent = (event: React.FormEvent<HTMLFormElement>) => {
     // Preventing the page from reloading
