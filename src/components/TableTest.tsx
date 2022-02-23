@@ -1,16 +1,6 @@
-/*
-  Import of components for use within this file.
-*/
-//Import for reacg components.
 import React, { useEffect, useState } from "react";
-//Import for getData custom components
 import getData from "./getData";
-//Import for components from @mui for table manipulation.
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
-/*
-  Import of table configs for the table within this file.
-  (What columns the table should include.)
-*/
 import {
   studentTableConfig,
   staffTableConfig,
@@ -55,14 +45,13 @@ import {
 //   Publisher: string;
 // };
 
-//Declaration of type for the table.
 type TableProp = {
   typeOf: string;
 };
 
-//What should be exported as a component by default.
 export default function DataGridDemo(props: TableProp) {
   let columns: GridColDef[] = [];
+
   let key = "";
 
   const [rows, setRows] = useState<any>(null);
@@ -79,23 +68,49 @@ export default function DataGridDemo(props: TableProp) {
     columns = bookTableConfig();
     key = "NTI_s_ID";
   }
+  console.log(props.typeOf);
   useEffect(() => {
-    getData("http://localhost:9823/books").then((response: any) => {
-      setRows(response);
-    });
+    getData("http://jawads-macbook-pro.local:9823/" + props.typeOf).then(
+      (response: any) => {
+        setRows(response);
+      }
+    );
   }, []);
-  console.log(rows);
+
   if (props.typeOf === "books") {
+    console.log(rows);
     // Visar själva tabellen respektive dess innehåll
     return (
       <div className=" h-[100%] w-[100%] p-2 ">
         {rows && (
           <DataGrid
-            style={{ height: 5 }}
             rows={rows}
             columns={columns}
             key={key}
             getRowId={(row) => row.NTI_s_ID}
+            onResize={(event) => {
+              console.log(rows);
+            }}
+            sx={{
+              ".MuiDataGrid-row:nth-child(odd)": {
+                backgroundColor: "#f1f1f1",
+              },
+              // ".MuiDataGrid-row:nth-child(even)": {
+              //   backgroundColor: "#f2ff2f",
+              // },
+              ".MuiDataGrid-cell ": {
+                // fontSize: "1rem",
+                lineHeight: "unset !important",
+                maxHeight: "none !important",
+                whiteSpace: "normal",
+              },
+              ".MuiDataGrid-renderingZone": {
+                maxHeight: "none !important",
+              },
+              "& .MuiDataGrid-row": {
+                maxHeight: "none !important",
+              },
+            }}
           />
         )}
       </div>
@@ -110,16 +125,9 @@ export default function DataGridDemo(props: TableProp) {
             columns={columns}
             key={key}
             getRowId={(row) => row.ID}
-
-            // Funktion för att bläddra x antal sidor (nu fallet 5)
-
-            // pageSize={5}
-            // rowsPerPageOptions={[5]}
-
-            // Viktigt för admin
-
-            // checkboxSelection
-            // disableSelectionOnClick
+            onResize={(col) => {
+              console.log(col);
+            }}
           />
         )}
       </div>
