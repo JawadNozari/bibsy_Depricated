@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import bg_0 from "../assets/images/Vector0.svg";
-import bg_1 from "../assets/images/Vector1.svg";
-import bg_2 from "../assets/images/Vector2.svg";
+import bg_1 from "../assets/images/Background.svg";
+import bg_0 from "../assets/images/BackgroundTop.svg";
+import bg_2 from "../assets/images/BackgroundBottom.svg";
 
 const Theme = () => {
   // useEffect(() => {
