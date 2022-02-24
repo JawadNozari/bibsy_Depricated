@@ -80,7 +80,9 @@ export default function DataGridDemo(props: TableProp) {
     key = "NTI_s_ID";
   }
   useEffect(() => {
+
     getData("http://admin-Macbook-pro.local:9823"+props.typeOf).then((response: any) => {
+
       setRows(response);
     });
   }, []);

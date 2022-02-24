@@ -264,6 +264,7 @@ export default function DataGridDemo(props: TableProp) {
       </div>
     );
   } else {
+    // Visar själva tabellen respektive dess innehåll
     return (
       <div className=" h-[100%] w-[100%] p-2 ">
         {rows && (
@@ -299,6 +300,5 @@ export default function DataGridDemo(props: TableProp) {
         )}
       </div>
     );
-    
   }
 }

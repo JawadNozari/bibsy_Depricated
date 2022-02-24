@@ -209,6 +209,7 @@ const Main = () => {
               path="/notReturnedList"
               element={
                 <>
+
                   <div className="z-10 flex h-[100%]  w-[100%] flex-row">
                     <div className="flex h-[100%] w-full flex-col content-between">
                       <div className="mb-[3%] h-[10%]">
@@ -219,6 +220,7 @@ const Main = () => {
                       <div className="h-[85%] w-full  rounded-2xl bg-white">
                         {/* <List mainColor='blå' listColor='ljusBlå' typeOf='BorrowedBooks' request="borrowed"/> */}
                         <Table typeOf="books" />
+
                       </div>
                     </div>
                   </div>
