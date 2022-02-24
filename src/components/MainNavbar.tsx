@@ -99,11 +99,11 @@ const MainNavbar = (props: any) => {
 
            {/*SMALL BUTTONS*/}
            {!props.isBig && 
-           <div className=" h-[15vh] w-[100%] right-[1%] top-[1%] items-start flex justify-center rounded-xl overflow-hidden">
+           <div className=" h-[15vh] w-[100%] right-[1%] top-[1%] items-start flex justify-center rounded-xl  ">
            
            <NavLink to="/dashboard" className="link">
-               <div className="navbar-options active:bg-adminSidebar bg-adminSidebar overflow-hidden">
-                   <label className=""><RiDashboardLine color='white'size={'3rem'}/></label>
+               <div className="navbar-options active:bg-adminSidebar bg-adminSidebar overflow-hidden ">
+                   <label className=""><RiDashboardLine color='white'size={'2.0rem'}/></label>
                    <p className="main-sidebar-text">
                        Dashboard
                    </p>
@@ -112,7 +112,7 @@ const MainNavbar = (props: any) => {
 
            <NavLink to="/staffList" className="link">
                <div className="navbar-options active:bg-mörkLila bg-lila">
-                   <label className=""><FiUsers color='white'size={'3rem'}/></label>
+                   <label className=""><FiUsers color='white'size={'2.0rem'}/></label>
                    <p className="main-sidebar-text">
                        Staff
                    </p>
@@ -120,7 +120,7 @@ const MainNavbar = (props: any) => {
            </NavLink>
            <NavLink to="/studentsList" className="link">
                <div className="navbar-options active:bg-mörkRosa bg-rosa">
-                   <label className=""><FiUsers color='white'size={'3rem'}/></label>
+                   <label className=""><FiUsers color='white'size={'2.0rem'}/></label>
                    <p className="main-sidebar-text">
                        Students
                    </p>
@@ -129,7 +129,7 @@ const MainNavbar = (props: any) => {
 
            <NavLink to="/bookList" className="link">
                <div className="navbar-options active:bg-mörkGul bg-gul">
-                   <label className=""><ImBooks color='white'size={'3rem'}/></label>
+                   <label className=""><ImBooks color='white'size={'2.0rem'}/></label>
                    <p className="main-sidebar-text">
                        Books
                    </p>
@@ -138,15 +138,15 @@ const MainNavbar = (props: any) => {
 
            <NavLink to="/availableBookList" className="link">
                <div className="navbar-options active:bg-mörkGrön bg-grön">
-                   <label className=""><SiBookstack color='white'size={'3rem'}/></label>
+                   <label className=""><SiBookstack color='white'size={'2.0rem'}/></label>
                    <p className="main-sidebar-text">
                        Available
                    </p>
                </div>
            </NavLink>
-           <NavLink to="/borrowedList" className="link ">
-               <div className="navbar-options active:bg-mörkBlå bg-blå mx-auto">
-                   <label className=""><SiBookstack color='white'size={'3rem'}/></label>
+           <NavLink to="/borrowedList" className="link">
+               <div className="navbar-options active:bg-mörkBlå bg-blå ">
+                   <label className=""><SiBookstack color='white'size={'2.0rem'}/></label>
                    <p className="main-sidebar-text">
                        Borrowed
                    </p>
@@ -154,8 +154,8 @@ const MainNavbar = (props: any) => {
            </NavLink>
            <NavLink to="/notReturnedList" className="link">
                <div className="navbar-options active:bg-mörkRöd bg-röd">
-                   <label className=""><RiErrorWarningLine color='white'size={'3rem'}/></label>
-                   <p className="main-sidebar-text w-[80%]">
+                   <label className=""><RiErrorWarningLine color='white'size={'2.0rem'}/></label>
+                   <p className="main-sidebar-text">
                        Missing
                    </p>
                </div>

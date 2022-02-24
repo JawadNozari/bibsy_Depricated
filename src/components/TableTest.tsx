@@ -79,7 +79,7 @@ export default function DataGridDemo(props: TableProp) {
 
   if (props.typeOf === "books") {
     console.log(rows);
-    // Visar själva tabellen respektive dess innehåll
+    // Visar själva tabellen respektive dess innehåll BOOKS
     return (
       <div className=" h-[100%] w-[100%] p-2 ">
         {rows && (
@@ -93,7 +93,155 @@ export default function DataGridDemo(props: TableProp) {
             }}
             sx={{
               ".MuiDataGrid-row:nth-child(odd)": {
-                backgroundColor: "#f1f1f1",
+                backgroundColor: 'rgba(214, 178, 53, 0.2)',
+              },
+              // ".MuiDataGrid-row:nth-child(even)": {
+              //   backgroundColor: "#f2ff2f",
+              // },
+              ".MuiDataGrid-cell ": {
+                // fontSize: "1rem",
+                lineHeight: "unset !important",
+                maxHeight: "none !important",
+                whiteSpace: "normal",
+              },
+              ".MuiDataGrid-renderingZone": {
+                maxHeight: "none !important",
+              },
+              "& .MuiDataGrid-row": {
+                maxHeight: "none !important",
+              },
+            }}
+          />
+        )}
+      </div>
+    );
+  } else if (props.typeOf === "staff") {
+    // Visar själva tabellen respektive dess innehåll STAFF
+    return (
+      <div className=" h-[100%] w-[100%] p-2 ">
+        {rows && (
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            key={key}
+            getRowId={(row) => row.ID}
+            onResize={(col) => {
+              console.log(col);
+            }}
+            sx={{
+              ".MuiDataGrid-row:nth-child(odd)": {
+                backgroundColor: 'rgba(145, 20, 159, 0.2)',
+              },
+              // ".MuiDataGrid-row:nth-child(even)": {
+              //   backgroundColor: "#f2ff2f",
+              // },
+              ".MuiDataGrid-cell ": {
+                // fontSize: "1rem",
+                lineHeight: "unset !important",
+                maxHeight: "none !important",
+                whiteSpace: "normal",
+              },
+              ".MuiDataGrid-renderingZone": {
+                maxHeight: "none !important",
+              },
+              "& .MuiDataGrid-row": {
+                maxHeight: "none !important",
+              },
+            }}
+          />
+        )}
+      </div>
+    );
+  } else if (props.typeOf === "students") {
+    // Visar själva tabellen respektive dess innehåll STUDENTS
+    return (
+      <div className=" h-[100%] w-[100%] p-2 ">
+        {rows && (
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            key={key}
+            getRowId={(row) => row.ID}
+            onResize={(col) => {
+              console.log(col);
+            }}
+            sx={{
+              ".MuiDataGrid-row:nth-child(odd)": {
+                backgroundColor: 'rgba(213, 27, 151, 0.2)',
+              },
+              // ".MuiDataGrid-row:nth-child(even)": {
+              //   backgroundColor: "#f2ff2f",
+              // },
+              ".MuiDataGrid-cell ": {
+                // fontSize: "1rem",
+                lineHeight: "unset !important",
+                maxHeight: "none !important",
+                whiteSpace: "normal",
+              },
+              ".MuiDataGrid-renderingZone": {
+                maxHeight: "none !important",
+              },
+              "& .MuiDataGrid-row": {
+                maxHeight: "none !important",
+              },
+            }}
+          />
+        )}
+      </div>
+    );
+  } else if (props.typeOf === "borrowed") {
+    // Visar själva tabellen respektive dess innehåll BORROWED
+    return (
+      <div className=" h-[100%] w-[100%] p-2 ">
+        {rows && (
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            key={key}
+            getRowId={(row) => row.ID}
+            onResize={(col) => {
+              console.log(col);
+            }}
+            sx={{
+              ".MuiDataGrid-row:nth-child(odd)": {
+                backgroundColor: 'rgba(38, 153, 219, 0.2)',
+              },
+              // ".MuiDataGrid-row:nth-child(even)": {
+              //   backgroundColor: "#f2ff2f",
+              // },
+              ".MuiDataGrid-cell ": {
+                // fontSize: "1rem",
+                lineHeight: "unset !important",
+                maxHeight: "none !important",
+                whiteSpace: "normal",
+              },
+              ".MuiDataGrid-renderingZone": {
+                maxHeight: "none !important",
+              },
+              "& .MuiDataGrid-row": {
+                maxHeight: "none !important",
+              },
+            }}
+          />
+        )}
+      </div>
+    );
+  } else if (props.typeOf === "missing") {
+    // Visar själva tabellen respektive dess innehåll MISSING
+    return (
+      <div className=" h-[100%] w-[100%] p-2 ">
+        {rows && (
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            key={key}
+            getRowId={(row) => row.ID}
+            onResize={(col) => {
+              console.log(col);
+            }}
+            sx={{
+              ".MuiDataGrid-row:nth-child(odd)": {
+                backgroundColor: 'rgba(219, 38, 38, 0.2)',
               },
               // ".MuiDataGrid-row:nth-child(even)": {
               //   backgroundColor: "#f2ff2f",
@@ -127,6 +275,26 @@ export default function DataGridDemo(props: TableProp) {
             getRowId={(row) => row.ID}
             onResize={(col) => {
               console.log(col);
+            }}
+            sx={{
+              ".MuiDataGrid-row:nth-child(odd)": {
+                backgroundColor: "#D6B235",
+              },
+              // ".MuiDataGrid-row:nth-child(even)": {
+              //   backgroundColor: "#f2ff2f",
+              // },
+              ".MuiDataGrid-cell ": {
+                // fontSize: "1rem",
+                lineHeight: "unset !important",
+                maxHeight: "none !important",
+                whiteSpace: "normal",
+              },
+              ".MuiDataGrid-renderingZone": {
+                maxHeight: "none !important",
+              },
+              "& .MuiDataGrid-row": {
+                maxHeight: "none !important",
+              },
             }}
           />
         )}
