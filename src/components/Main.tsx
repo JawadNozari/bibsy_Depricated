@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Theme from "./Theme";
 
 import {
@@ -6,6 +6,7 @@ import {
   Route,
   Routes,
   useNavigate,
+  Navigate,
 } from "react-router-dom";
 
 import SignInWidget from "./SignIn_Widgetv2";
@@ -19,6 +20,9 @@ import Details from "./Details";
 import axios from "axios";
 import { response } from "express";
 import UseToken from "./UseToken";
+
+
+
 
 const Main = () => {
   const meta = {
@@ -47,8 +51,9 @@ const Main = () => {
         <div className="m-auto flex h-[90%] w-[90%] touch-none flex-row content-center justify-center">
           {/* { isAdmin && <Navbar/>  } */}
 
+          
+
           <Routes>
-            {/* {!token ? navigator("/") : null} */}
 
             {/*Sign in page*/}
             <Route
@@ -264,6 +269,10 @@ const Main = () => {
 
             {/* Displays loaned books */}
             <Route path="/detailsStaff/:cate/:ID" element={<Details />} />
+
+            {/* Path not found */}
+            <Route path="*" element={<MainNavbar isBig={true} />} />
+            
           </Routes>
         </div>
       </Router>

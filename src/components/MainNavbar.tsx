@@ -6,7 +6,23 @@ import { RiErrorWarningLine } from "react-icons/ri";
 import { RiDashboardLine } from "react-icons/ri";
 import { Link, NavLink } from "react-router-dom";
 
+import UseToken from "./UseToken";
+import { useNavigate } from "react-router-dom";
+
+
+
 const MainNavbar = (props: any) => {
+  
+  const { token, setToken } = UseToken();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!token) {
+      console.log("false");
+      navigate("/");
+    }
+  })
+  
   //     const [] = useEffect<>();
 
   //     useEffect(() => {

@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
 async function loginUser(credentials: any) {
-  return fetch("http://192.168.198.81:2398/login", {
+  return fetch("http://localhost:3001/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -19,6 +19,7 @@ async function loginUser(credentials: any) {
 }
 
 const SignInWidget = ({ setToken }: any) => {
+
   const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
@@ -35,29 +36,24 @@ const SignInWidget = ({ setToken }: any) => {
     console.log(SignIn);
 
     axios
-      .post("http://localhost:2398/login", SignIn)
+      .post("http://localhost:3001/login", SignIn)
       .then((res) => {
         console.log("Backend: ");
         console.log(res);
-        if (res.data.redirect) {
-          console.log("Redirect!");
+        if (res.data.token) {
+          console.log(res.data.token);
 
-          setToken(token);
+          setToken(res.data.token);
 
           navigate("/dashboard");
+
         } else {
-          alert("Inte episk vinst");
+          // alert("Inte episk vinst");
         }
       })
       .catch((err) => {
         console.error(err);
       });
-    const token = await loginUser({
-      username,
-      password,
-    });
-
-    setToken(token);
   };
 
   return (
@@ -104,36 +100,6 @@ const SignInWidget = ({ setToken }: any) => {
           />
         </div>
 
-        <div className="mt-6 ml-1 flex items-center border-none">
-          <input type="checkbox" id="remember" className="mr-2 h-5 w-5" />
-          <label htmlFor="remember" className="text-white">
-            Remember me
-          </label>
-        </div>
-
-        <div className="grid">
-          <button
-            type="submit"
-            className="m-auto mt-10 mb-10 w-[60%] rounded-full border-none bg-pink-600 p-2 text-white "
-          >
-            Sign in
-          </button>
-        </div>
-
-        <div className=" SignIn-div">
-          <label htmlFor="password" className="mr-4">
-            <RiLockPasswordFill color="white" size={"2rem"} />
-          </label>
-          {/* ger inputen ett värde och sedan lagrar den till useState */}
-          <input
-            type="password"
-            id="password"
-            placeholder="Password"
-            className="ml-1 w-[100%] border-0 bg-transparent outline-none"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
         <div className="mt-6 ml-1 flex items-center border-none">
           <input type="checkbox" id="remember" className="mr-2 h-5 w-5" />
           <label htmlFor="remember" className="text-white">

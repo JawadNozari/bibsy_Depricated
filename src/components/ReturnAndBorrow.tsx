@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import UseToken from "./UseToken";
+import { useNavigate } from "react-router-dom";
 import UseAxios from "./UseAxios";
+
 const ReturnAndBorrow = (props: any) => {
   const [id, setId] = useState<string>("");
   const [isbn, setIsbn] = useState<any>("");
@@ -8,6 +10,9 @@ const ReturnAndBorrow = (props: any) => {
   const [elevId, setElevId] = useState("");
   const [ntiId, setNtiId] = useState("");
   const [lararId, setLararId] = useState("");
+
+  const { token, setToken } = UseToken();
+  const navigate = useNavigate();
 
   const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     // Preventing the page from reloading
@@ -24,6 +29,16 @@ const ReturnAndBorrow = (props: any) => {
     // Do something
     alert("");
   };
+
+  
+
+useEffect(() => {
+    console.log(token);
+    if (!token) {
+      console.log("false");
+      navigate("/");
+    }
+  }, [])
 
   return (
     <>

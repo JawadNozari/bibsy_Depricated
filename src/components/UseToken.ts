@@ -7,12 +7,12 @@ const UseToken = () => {
     const getToken: any = () => {
         const tokenString: any | null = localStorage.getItem('token');
         const userToken = JSON.parse(tokenString);
-        return userToken?.token;
+        return userToken;
     }
 
     const saveToken: any = (userToken: any) => {
         localStorage.setItem('token', JSON.stringify(userToken));
-        setToken(userToken.token);
+        setToken(userToken);
     }
 
     return {
