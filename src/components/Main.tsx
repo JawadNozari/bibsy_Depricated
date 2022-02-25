@@ -1,4 +1,3 @@
-//The codes below import exports from their respective modules. 
 import React, { useState } from "react";
 import Theme from "./Theme";
 
@@ -10,10 +9,10 @@ import Navbar from "./Navbar";
 import RegisterBook from "./RegisterBook";
 import ReturnAndBorrow from "./ReturnAndBorrow";
 import DocumentMeta from "react-document-meta";
-import List from "./List";
+// import List from './Table';
 import Details from "./Details";
+import Table from "./TableTest";
 
-// A constant arrow function is created, which will render everything under return. 
 const Main = () => {
   const meta = {
     title: "Bibsy",
@@ -28,10 +27,9 @@ const Main = () => {
       },
     },
   };
-  // State. This allows to change information in components. 
+
   const [isAdmin, setIsAdmin] = useState<boolean>(true);
 
-  //Renders the site. 
   return (
     <div className="flex h-screen w-screen">
       <Router>
@@ -94,10 +92,9 @@ const Main = () => {
                 <ReturnAndBorrow isReturn={true} />
               }
             />
-
             {/* Displays all members */}
             <Route
-              path="/studentList"
+              path="/studentsList"
               element={
                 <>
                   <div className="z-10 flex h-[100%] w-[100%] flex-row">
@@ -106,14 +103,11 @@ const Main = () => {
                         <MainNavbar />
                       </div>
                       <></>
-                      <div className="h-[85%] w-full rounded-2xl bg-white">
+                      <div className="h-[100%] w-full rounded-2xl bg-white">
                         {/* List component, takes mainColor and listColor as params to dynamicly change color between pages, typeOf determines if the component displays the memberstyle list or bookstyle, there is also two types of bookdisplays named bookType, "available" and "borrowed", this can be greatly improved for simplicity by changing typeof to three different types like member, available and borrowed */}
-                        <List
-                          mainColor="lila"
-                          listColor="ljusLila"
-                          typeOf="Students"
-                          request="students"
-                        />
+
+                        <Table typeOf="students" />
+                        {/* <List mainColor='lila' listColor='ljusLila' typeOf='Students' request="students"/> */}
                       </div>
                     </div>
                   </div>
@@ -134,12 +128,8 @@ const Main = () => {
 
                       <div className="h-[85%] w-full  rounded-2xl bg-white">
                         {/* List component, takes mainColor and listColor as params to dynamicly change color between pages, typeOf determines if the component displays the memberstyle list or bookstyle, there is also two types of bookdisplays named bookType, "available" and "borrowed", this can be greatly improved for simplicity by changing typeof to three different types like member, available and borrowed */}
-                        <List
-                          mainColor="lila"
-                          listColor="ljusLila"
-                          typeOf="Staff"
-                          request="staff"
-                        />
+                        {/* <List mainColor='lila' listColor='ljusLila' typeOf='Staff' request="staff"/> */}
+                        <Table typeOf="staff" />
                       </div>
                     </div>
                   </div>
@@ -161,12 +151,8 @@ const Main = () => {
                       <div className="h-[85%] w-full  rounded-2xl bg-white">
                         <></>
                         {/* List component, takes mainColor and listColor as params to dynamicly change color between pages, typeOf determines if the component displays the memberstyle list or bookstyle, there is also two types of bookdisplays named bookType, "available" and "borrowed", this can be greatly improved for simplicity by changing typeof to three different types like member, available and borrowed */}
-                        <List
-                          mainColor="gul"
-                          listColor="ljusGul"
-                          typeOf="AllBooks"
-                          request="books"
-                        />
+                        {/* <List mainColor='gul' listColor='ljusGul' typeOf='AllBooks' request="books"/> */}
+                        <Table typeOf="books" />
                       </div>
                     </div>
                   </div>
@@ -188,12 +174,7 @@ const Main = () => {
                       <div className="h-[85%] w-full  rounded-2xl bg-white">
                         <></>
                         {/* List component, takes mainColor and listColor as params to dynamicly change color between pages, typeOf determines if the component displays the memberstyle list or bookstyle, there is also two types of bookdisplays named bookType, "available" and "borrowed", this can be greatly improved for simplicity by changing typeof to three different types like member, available and borrowed */}
-                        <List
-                          mainColor="grön"
-                          listColor="ljusGrön"
-                          typeOf="AvailableBooks"
-                          request="availableBooks"
-                        />
+                        {/* <List mainColor='grön' listColor='ljusGrön' typeOf='AvailableBooks' request="availableBooks"/> */}
                       </div>
                     </div>
                   </div>
@@ -206,20 +187,16 @@ const Main = () => {
               path="/borrowedList"
               element={
                 <>
-                  <div className="flex h-[100%] w-[100%]  flex-row">
+                  <div className="z-10 flex h-[100%]  w-[100%] flex-row">
                     <div className="flex h-[100%] w-full flex-col content-between">
                       <div className="mb-[3%] h-[10%]">
-                        <MainNavbar />
+                        <MainNavbar isBig={false} />
                       </div>
 
+                      <></>
                       <div className="h-[85%] w-full  rounded-2xl bg-white">
-                        <></>
-                        <List
-                          mainColor="blå"
-                          listColor="ljusBlå"
-                          typeOf="BorrowedBooks"
-                          request="borrowed"
-                        />
+                        {/* <List mainColor='blå' listColor='ljusBlå' typeOf='BorrowedBooks' request="borrowed"/> */}
+                        <Table typeOf="books" />
                       </div>
                     </div>
                   </div>
@@ -232,20 +209,18 @@ const Main = () => {
               path="/notReturnedList"
               element={
                 <>
-                  <div className="flex h-[100%] w-[100%]  flex-row">
+
+                  <div className="z-10 flex h-[100%]  w-[100%] flex-row">
                     <div className="flex h-[100%] w-full flex-col content-between">
                       <div className="mb-[3%] h-[10%]">
-                        <MainNavbar />
+                        <MainNavbar isBig={false} />
                       </div>
 
+                      <></>
                       <div className="h-[85%] w-full  rounded-2xl bg-white">
-                        <></>
-                        <List
-                          mainColor="blå"
-                          listColor="ljusBlå"
-                          typeOf="BorrowedBooks"
-                          request="borrowed"
-                        />
+                        {/* <List mainColor='blå' listColor='ljusBlå' typeOf='BorrowedBooks' request="borrowed"/> */}
+                        <Table typeOf="books" />
+
                       </div>
                     </div>
                   </div>

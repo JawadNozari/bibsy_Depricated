@@ -1,4 +1,3 @@
-//Imported components frommodules for this file.
 import React from "react";
 import { BiUserCircle } from "react-icons/bi";
 import { FiUsers } from "react-icons/fi";
@@ -7,9 +6,7 @@ import { RiDashboardLine } from "react-icons/ri";
 import { ImBooks } from "react-icons/im";
 import { Link, NavLink } from "react-router-dom";
 
-//Declaration of what is to be rendered.
 const Navbar = () => {
-  //The html of what is supposed to be rendered on export.
   return (
     // Here is the main component of the navbar
     <div className="bg-adminSidebar  z-10 grid h-[100%] w-[2vw] items-center justify-center overflow-hidden rounded-l-2xl xl:w-[16vw] xl:p-[2vw]">
@@ -69,5 +66,4 @@ const Navbar = () => {
     </div>
   );
 };
-//Exports "Navbar" as a component to be rendered.
 export default Navbar;

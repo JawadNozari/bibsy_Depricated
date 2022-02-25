@@ -1,11 +1,10 @@
-//Import of components from modules for this file.
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { GiArchiveRegister } from "react-icons/gi";
 import UseAxios from "./UseAxios";
 
 const RegisterBook = (props: any) => {
-  //Lagrar dess informationen som state.
+  //Lagrar dess informationen som state
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [eMail, setEmail] = useState("");
@@ -34,12 +33,10 @@ const RegisterBook = (props: any) => {
     UseAxios("192.168.198.144:3001/registerBook", book);
   };
 
-  //When this event is active, do the following.
   const submitFormStudent = (event: React.FormEvent<HTMLFormElement>) => {
     // Preventing the page from reloading
     event.preventDefault();
 
-    //Data to be sent as an object
     let student = {
       FirstName: firstName,
       LastName: lastName,
@@ -50,7 +47,6 @@ const RegisterBook = (props: any) => {
     UseAxios("192.168.198.144:3001/registerStudent", student);
   };
 
-  //What to render.
   return (
     <>
       {/* Register member */}
@@ -191,5 +187,4 @@ const RegisterBook = (props: any) => {
   );
 };
 
-//Exports the "RegisterBook" components which can be rendered.
 export default RegisterBook;
