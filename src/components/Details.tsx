@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import getData from "./getData";
 
-import UseToken from "./UseToken";
 import { useNavigate } from "react-router-dom";
+
+import cookie, { useCookies } from "react-cookie";
+
 
 type Param = {
   category: string;
@@ -34,12 +36,11 @@ const Details = () => {
   const [member, setMember] = useState<Member | null>(null);
   const [book, setBook] = useState<Book | null>(null);
   
-  const { token, setToken } = UseToken();
+  const [cookies, setCookie, removeCookie] = useCookies(['loggedIn']);
   const navigate = useNavigate();
 
   useEffect(() => {
-
-    if (!token) {
+    if (!cookies.loggedIn) {
       console.log("false");
       navigate("/");
     }

@@ -8,6 +8,10 @@ import { response } from "express";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
+import cookie, { useCookies } from "react-cookie";
+
+
+
 async function loginUser(credentials: any) {
   return fetch("http://localhost:3001/login", {
     method: "POST",
@@ -19,6 +23,8 @@ async function loginUser(credentials: any) {
 }
 
 const SignInWidget = ({ setToken }: any) => {
+  
+  const [cookies, setCookie, removeCookie] = useCookies(['loggedIn']);
 
   const navigate = useNavigate();
 
@@ -36,19 +42,19 @@ const SignInWidget = ({ setToken }: any) => {
     console.log(SignIn);
 
     axios
-      .post("http://localhost:3001/login", SignIn)
+      .post("http://192.168.198.81:3001/login", SignIn)
       .then((res) => {
         console.log("Backend: ");
         console.log(res);
         if (res.data.token) {
           console.log(res.data.token);
 
-          setToken(res.data.token);
+          setCookie("loggedIn", res.data.token, {expires: undefined});
 
           navigate("/dashboard");
 
         } else {
-          // alert("Inte episk vinst");
+          alert("Inte episk vinst");
         }
       })
       .catch((err) => {

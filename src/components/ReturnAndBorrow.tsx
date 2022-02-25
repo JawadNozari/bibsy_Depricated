@@ -3,7 +3,12 @@ import UseToken from "./UseToken";
 import { useNavigate } from "react-router-dom";
 import UseAxios from "./UseAxios";
 
+import cookie, { useCookies } from "react-cookie";
+
+
+
 const ReturnAndBorrow = (props: any) => {
+
   const [id, setId] = useState<string>("");
   const [isbn, setIsbn] = useState<any>("");
   const [hasIsbn, setHasIsbn] = useState<boolean | null>(null);
@@ -11,7 +16,7 @@ const ReturnAndBorrow = (props: any) => {
   const [ntiId, setNtiId] = useState("");
   const [lararId, setLararId] = useState("");
 
-  const { token, setToken } = UseToken();
+  const [cookies, setCookie, removeCookie] = useCookies(['loggedIn']);
   const navigate = useNavigate();
 
   const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
@@ -30,15 +35,12 @@ const ReturnAndBorrow = (props: any) => {
     alert("");
   };
 
-  
-
 useEffect(() => {
-    console.log(token);
-    if (!token) {
+    if (!cookies.loggedIn) {
       console.log("false");
       navigate("/");
     }
-  }, [])
+  })
 
   return (
     <>

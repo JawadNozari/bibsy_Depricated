@@ -2,8 +2,12 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { GiArchiveRegister } from "react-icons/gi";
 import UseAxios from "./UseAxios";
-import UseToken from "./UseToken";
+
 import { useNavigate } from "react-router-dom";
+
+import cookie, { useCookies } from "react-cookie";
+
+
 
 const RegisterBook = (props: any) => {
   //Lagrar dess informationen som state
@@ -19,7 +23,7 @@ const RegisterBook = (props: any) => {
 
   const [ISBN, setISBN] = useState("");
 
-  const { token, setToken } = UseToken();
+  const [cookies, setCookie, removeCookie] = useCookies(['loggedIn']);
   
   const navigate = useNavigate();
 
@@ -41,14 +45,13 @@ const RegisterBook = (props: any) => {
   };
 
 
+
 useEffect(() => {
-    console.log(token);
-    if (!token) {
+    if (!cookies.loggedIn) {
       console.log("false");
       navigate("/");
     }
-  }, [])
-
+  })
 
   const submitFormStudent = (event: React.FormEvent<HTMLFormElement>) => {
     // Preventing the page from reloading

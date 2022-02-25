@@ -4,8 +4,10 @@ import { TiTimes } from "react-icons/ti";
 import getData from "./getData";
 import { Link } from "react-router-dom";
 
-import UseToken from "./UseToken";
 import { useNavigate } from "react-router-dom";
+
+import cookie, { useCookies } from "react-cookie";
+
 
 
 
@@ -72,17 +74,21 @@ const List = (props: Props) => {
   const [isAvailableBooks, setIsAvailableBooks] = useState<boolean>(false);
   const [isBorrowedBooks, setIsBorrowedBooks] = useState<boolean>(false);
   const [isMissingBooks, setIsMissingBooks] = useState<boolean>(false);
+
+  const [cookies, setCookie, removeCookie] = useCookies(['loggedIn']);
+
+    
+ 
   
-  const { token, setToken } = UseToken();
   const navigate = useNavigate();
   //Runs only on first update
   useEffect(() => {
     
-    if (!token) {
+    
+    if (!cookies.loggedIn) {
       console.log("false");
       navigate("/");
     }
-
     //fetching data
     getData("http://localhost:3001/" + props.request).then((res) => {
       setData(res);
