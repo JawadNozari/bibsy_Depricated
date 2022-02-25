@@ -21,6 +21,8 @@ import axios from "axios";
 import { response } from "express";
 import UseToken from "./UseToken";
 
+import cookie, { useCookies } from "react-cookie";
+
 
 
 
@@ -39,10 +41,14 @@ const Main = () => {
     },
   };
 
+  const [cookies, setCookie, removeCookie] = useCookies(['loggedIn']);
+
   const [isAdmin, setIsAdmin] = useState<boolean>(true);
 
   const { token, setToken } = UseToken();
 
+
+  
   return (
     <div className="flex h-screen w-screen">
       <Router>

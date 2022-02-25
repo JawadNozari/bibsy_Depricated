@@ -6,18 +6,19 @@ import { RiDashboardLine } from "react-icons/ri";
 import { ImBooks } from "react-icons/im";
 import { Link, NavLink } from "react-router-dom";
 
-import UseToken from "./UseToken";
 import { useNavigate } from "react-router-dom";
+
+import cookie, { useCookies } from "react-cookie";
 
 
 
 const Navbar = () => {
   
-  const { token, setToken } = UseToken();
+  const [cookies, setCookie, removeCookie] = useCookies(['loggedIn']);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!token) {
+    if (!cookies.loggedIn) {
       console.log("false");
       navigate("/");
     }
